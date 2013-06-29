@@ -1,0 +1,29 @@
+<h1>Listing casts</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Image url</th>
+    <th>Source code</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @casts.each do |cast| %>
+  <tr>
+    <td><%= cast.title %></td>
+    <td><%= cast.description %></td>
+    <td><%= cast.image_url %></td>
+    <td><%= cast.source_code %></td>
+    <td><%= link_to 'Show', cast %></td>
+    <td><%= link_to 'Edit', edit_cast_path(cast) %></td>
+    <td><%= link_to 'Destroy', cast, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Cast', new_cast_path %>

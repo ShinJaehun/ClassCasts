@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @cast.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @cast.description %>
+</p>
+
+<p>
+  <b>Image url:</b>
+  <%= @cast.image_url %>
+</p>
+
+<p>
+  <b>Source code:</b>
+  <%= @cast.source_code %>
+</p>
+
+
+<%= link_to 'Edit', edit_cast_path(@cast) %> |
+<%= link_to 'Back', casts_path %>
