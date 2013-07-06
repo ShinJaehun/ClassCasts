@@ -10,15 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130629153534) do
+ActiveRecord::Schema.define(:version => 20130630174809) do
 
   create_table "casts", :force => true do |t|
     t.string   "title"
     t.text     "description"
-    t.string   "image_url"
-    t.string   "source_code"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "video_link"
   end
 
 end

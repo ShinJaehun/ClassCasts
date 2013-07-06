@@ -1,29 +1,111 @@
-<h1>Listing casts</h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Image url</th>
-    <th>Source code</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="container">
 
-<% @casts.each do |cast| %>
-  <tr>
-    <td><%= cast.title %></td>
-    <td><%= cast.description %></td>
-    <td><%= cast.image_url %></td>
-    <td><%= cast.source_code %></td>
-    <td><%= link_to 'Show', cast %></td>
-    <td><%= link_to 'Edit', edit_cast_path(cast) %></td>
-    <td><%= link_to 'Destroy', cast, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+  <div id="myCarousel" class="carousel slide">
+  <!-- Carousel items -->
+    <div class="carousel-inner">
+      <div class="active item"><img src="assets/slider/1.jpg" /></div>
+      <div class="item"><img src="assets/slider/2.jpg" /></div>
+      <div class="item"><img src="assets/slider/3.jpg" /></div>
+    </div>
+          <!-- Carousel nav -->
+    <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+  </div>
 
-<br />
+      
+      <div class="row">
+        
+        <div class="span8">
+              <% @casts.each do |cast| %>
+          
+          <div class="post">
+            <div class="row">
+          <div class="feat-img span2">
+              <img src="http://img.youtube.com/vi/<%= cast.video_link.split('/').last %>/hqdefault.jpg" title="featured image" alt="an image was here" />
+          </div><!-- end featured image -->
 
-<%= link_to 'New Cast', new_cast_path %>
+          <div class="details span6">
+            <h4><%= cast.title %></h4>
+            <p><%= cast.description %></p>
+                      <%= link_to t('.show', :default => t("helpers.links.show")),
+                      cast_path(cast), :class => 'btn btn-mini' %>
+
+<div id="example" class="modal hide fade in" style="display: none; ">
+            <div class="modal-header">
+              <a class="close" data-dismiss="modal">×</a>
+              <h3>This is a Modal Heading</h3>
+            </div>
+            <div class="modal-body">
+              <h4>Text in a modal</h4>
+              <p>You can add some text here.</p>            
+            </div>
+            <div class="modal-footer">
+              <a href="#" class="btn btn-success">Call to action</a>
+              <a href="#" class="btn" data-dismiss="modal">Close</a>
+            </div>
+          </div>
+
+<a data-toggle="modal" href="#example" class="btn btn-mini">Launch demo modal</a>
+
+
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_cast_path(cast), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      cast_path(cast),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+          </div> <!-- end details -->
+
+          </div><!-- end post row -->
+
+        </div><!-- end post -->
+<hr>
+            <% end %>
+
+
+
+        </div><!-- end main area -->
+
+        <aside class="span4">
+          
+          <div class="row">
+            
+
+            <div class="widget span4">
+              <h3>Widget Title</h3>
+
+              <p>
+               Lorem ipsum incididunt labore proident sit laboris ex ullamco reprehenderit esse consequat deserunt proident Ut proident in velit minim cupidatat in reprehenderit nulla Ut qui dolor dolore sunt dolore aliqua Ut qui.  
+              </p>
+            </div><!-- end widget -->
+
+            <div class="widget span4">
+              <h3>Widget Title</h3>
+
+              <ul>
+                <li><a href="#">Log In</a></li>
+                <li><a href="#">Log Out</a></li>
+                <li><a href="#">Sign Up</a></li>
+                <li><a href="#">Comment</a></li>
+                <li><a href="#">On This</a></li>
+                <li><a href="#">Post</a></li>
+              </ul>
+            </div><!-- end widget -->
+
+            <div class="widget span4">
+              <h3>Widget Title</h3>
+
+              <p>
+               <img src="http://lorempixel.com/550/325/nature/5" title="widget image" alt="an image was here" />
+              </p>
+            </div><!-- end widget -->
+
+
+          </div><!-- end widget row -->
+
+        </aside><!-- end sidebar -->
+
+      </div><!-- end row -->
+    </div><!-- end container -->

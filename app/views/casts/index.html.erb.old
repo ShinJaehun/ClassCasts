@@ -1,0 +1,138 @@
+<%- model_class = Cast -%>
+
+<!-- Example row of columns -->
+<div class="container">  
+  <div class="row">  
+    <% @casts.each do |cast| %>
+      <div class="span4">  
+        <img src="http://img.youtube.com/vi/<%= cast.video_link.split('/').last %>/mqdefault.jpg" />
+        <h4><%= link_to cast.title, cast_path(cast) %></h4>  
+        <p><%= cast.description %></p>  
+        <p><a class="btn btn-success btn-large" href="#">View apps</a></p>  
+      </div>  
+    <% end %>
+  </div>
+</div>  
+
+
+<table class="table table-striped">
+   <tbody>
+    <% @casts.each do |cast| %>
+      <tr>
+        <td><img src="http://img.youtube.com/vi/<%= cast.video_link.split('/').last %>/default.jpg" /></td>
+        <td><%= link_to cast.title, cast_path(cast) %></td>
+        <td><%= cast.description %></td>
+        <td><%=l cast.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_cast_path(cast), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      cast_path(cast),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<table class="table table-striped">
+   <tbody>
+    <% @casts.each do |cast| %>
+      <tr>
+        <td><img src="http://img.youtube.com/vi/<%= cast.video_link.split('/').last %>/mqdefault.jpg" /></td>
+        <td><%= link_to cast.title, cast_path(cast) %></td>
+        <td><%= cast.description %></td>
+        <td><%=l cast.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_cast_path(cast), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      cast_path(cast),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="section">
+  <% @casts.each do |cast| %>
+  <div class="row">
+    <img height="125" width="200" src="http://img.youtube.com/vi/<%= cast.video_link.split('/').last %>/hqdefault.jpg" />
+    <%= link_to cast.title, cast_path(cast) %>
+    <%= cast.description %>
+    <%=l cast.created_at %>
+ 
+  </div>
+  <% end %>
+</div>
+<p>
+
+
+<div class="section">
+  <% @casts.each do |cast| %>
+  <div class="row">
+    <div class="span4 offset1">
+      <img src="http://img.youtube.com/vi/<%= cast.video_link.split('/').last %>/mqdefault.jpg" />
+    </div>
+    <div class="span5">
+      <%= link_to cast.title, cast_path(cast) %>
+      <%= cast.description %>
+      <%=l cast.created_at %>
+    </div>
+  </div>
+  <% end %>
+</div>
+<p>
+
+  
+<div class="content">
+      <% @casts.each do |cast| %>
+
+  <div class="episodes">
+      <div class="full">
+        <div class="episode" id="episode_476">
+          <div class="screenshot"><a href="/episodes/417-foundation"><img src="http://img.youtube.com/vi/<%= cast.video_link.split('/').last %>/mqdefault.jpg" /></a></div>
+             <div class="main">
+                <div class="info">
+                  <span class="number">Episode #417</span> &ndash;
+                  <span class="published_at">Jun 16, 2013</span> &ndash;
+                  <span class="comments"><a href="/episodes/417-foundation?view=comments">43 comments</a></span>
+                </div>
+                <h4>
+                  <%= link_to cast.title, cast_path(cast) %>
+                </h4>
+                <div class="description">
+                  <%= cast.description %>
+                </div>
+                <div class="watch">
+                    <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                        edit_cast_path(cast), :class => 'btn btn-mini' %>
+                    <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                        cast_path(cast),
+                       :method => :delete,
+                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                        :class => 'btn btn-mini btn-danger' %>
+                </div>
+              </div>
+              <div class="clear"></div>
+
+            </div>
+      </div>
+      </div>
+        <% end %>
+
+    </div>
+
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_cast_path,
+            :class => 'btn btn-primary' %>
+
+    <div id="main">
+
+      

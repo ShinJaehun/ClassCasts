@@ -5,10 +5,42 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
 
-<%= yield %>
+<body>
+<div class="container">
+  <div class="leaderboard">  
+    <h1>프로젝트 쑥쑥오름교실</h1>  
+<p>초등학교 5, 6학년 과학 수업 시간에 공부한 내용을 영상으로 정리했습니다.</p>  
+</div>  
+
+<div class="navbar navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="#">ClassCasts</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li><%= link_to "과학수업영상", casts_path %></li>
+          <li><%= link_to "학습자료" %></li>
+          <li><%= link_to "수행평가" %></li>
+          <li><%= link_to "로그인" %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <%= yield %>
 
 </body>
+
+<footer>  
+<p>© ClassCasts 2013</p>  
+</footer>  
 </html>
