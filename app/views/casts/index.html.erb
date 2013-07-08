@@ -1,19 +1,6 @@
 
 <div class="container">
 
-  <div id="myCarousel" class="carousel slide">
-  <!-- Carousel items -->
-    <div class="carousel-inner">
-      <div class="active item"><img src="assets/slider/1.jpg" /></div>
-      <div class="item"><img src="assets/slider/2.jpg" /></div>
-      <div class="item"><img src="assets/slider/3.jpg" /></div>
-    </div>
-          <!-- Carousel nav -->
-    <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-    <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-  </div>
-
-      
       <div class="row">
         
         <div class="span8">
@@ -63,6 +50,14 @@
         </div><!-- end post -->
 <hr>
             <% end %>
+
+
+<div class="row">
+  <div class="span8">
+    <%= link_to t('.new', :default => t("helpers.links.new")),
+    new_cast_path, :class => 'btn btn-primary' %>
+  </div>
+</div>
 
 
 

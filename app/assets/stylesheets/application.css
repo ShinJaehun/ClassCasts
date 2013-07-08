@@ -22,8 +22,7 @@
 .video-container object,
 .video-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-
-
+/* 여기서부터는 필요 없지 않을까? */
 /*
 img.highqual { -ms-interpolation-mode:bicubic }
 img.nearestn { -ms-interpolation-mode:nearest-neighbor }
