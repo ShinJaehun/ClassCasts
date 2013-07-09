@@ -1,0 +1,20 @@
+<ul class="nav pull-right">
+  <% if user_signed_in? %>
+    <li>
+    <%= link_to('로그아웃', destroy_user_session_path, :method=>'delete') %>
+    </li>
+  <% else %>
+    <li>
+    <%= link_to('로그인', new_user_session_path)  %>
+    </li>
+  <% end %>
+  <% if user_signed_in? %>
+    <li>
+    <%= link_to(current_user.username, edit_user_registration_path) %>
+    </li>
+  <% else %>
+    <li>
+    <%= link_to('사용자등록', new_user_registration_path)  %>
+    </li>
+  <% end %>
+</ul>
