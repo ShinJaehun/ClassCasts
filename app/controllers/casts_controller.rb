@@ -2,7 +2,9 @@ class CastsController < ApplicationController
   # GET /casts
   # GET /casts.json
   def index
-    @casts = Cast.all
+    @casts = Cast.all(:order => "created_at DESC")
+    @casts_5th = Cast.five.recent
+    @casts_6th = Cast.six.recent
 
     respond_to do |format|
       format.html # index.html.erb

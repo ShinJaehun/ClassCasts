@@ -1,0 +1,80 @@
+/*
+var casts = new Array();
+<% for cast in @casts -%>
+  casts.push(new Array(<%= state.country_id %>, '<%=h state.name %>', <%= state.id %>));
+<% end -%>
+
+function countrySelected() {
+  country_id = $('person_country_id').getValue();
+  options = $('person_state_id').options;
+  options.length = 1;
+  states.each(function(state) {
+    if (state[0] == country_id) {
+      options[options.length] = new Option(state[1], state[2]);
+    }
+  });
+  if (options.length == 1) {
+    $('state_field').hide();
+  } else {
+    $('state_field').show();
+  }
+}
+
+document.observe('dom:loaded', function() {
+  countrySelected();
+  $('person_country_id').observe('change', countrySelected);
+});
+*/
+
+
+function sub_change1()
+{
+ vn_mnu1 = frm.menu1.selectedIndex;
+ if ( vn_mnu1 == 1 )
+ {
+  frm.menu2.length = 3;
+  frm.menu2.options[0].text =  '---두번째 항목---';
+  frm.menu2.options[1].text =  '남';
+  frm.menu2.options[2].text =  '여';
+ }
+ if ( vn_mnu1 == 2 )
+ {
+  frm.menu2.length = 7;
+  frm.menu2.options[0].text =  '---두번째 항목---';
+  frm.menu2.options[1].text =  '10대이하';
+  frm.menu2.options[2].text =  '10대';
+  frm.menu2.options[3].text =  '20대';
+  frm.menu2.options[4].text =  '30대';
+  frm.menu2.options[5].text =  '40대';
+  frm.menu2.options[6].text =  '50대이상';
+ }
+ if ( vn_mnu1 == 3 )
+ {
+  frm.menu2.length = 16;
+  frm.menu2.options[0].text =  '---두번째 항목---';
+  frm.menu2.options[1].text =  '강원도';
+  frm.menu2.options[2].text =  '경기도';
+  frm.menu2.options[3].text =  '경상남도';
+  frm.menu2.options[4].text =  '경상북도';
+  frm.menu2.options[5].text =  '광주광역시';
+  frm.menu2.options[7].text =  '대구광역시';
+  frm.menu2.options[8].text =  '부산광역시';
+  frm.menu2.options[9].text =  '서울특별시';
+  frm.menu2.options[10].text =  '울산광역시';
+  frm.menu2.options[11].text =  '전라남도';
+  frm.menu2.options[12].text =  '전라북도';
+  frm.menu2.options[13].text =  '제주도';
+  frm.menu2.options[14].text =  '충청남도';
+  frm.menu2.options[15].text =  '충청북도';
+ }
+ if ( vn_mnu1 == 4 )
+ {
+  frm.menu2.length = 6;
+  frm.menu2.options[0].text =  '---두번째 항목---';
+  frm.menu2.options[1].text =  '기독교';
+  frm.menu2.options[2].text =  '불교';
+  frm.menu2.options[3].text =  '천주교';
+  frm.menu2.options[4].text =  '기타';
+  frm.menu2.options[5].text =  '무교';
+ }
+}

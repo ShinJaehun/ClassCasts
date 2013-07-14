@@ -1,115 +1,126 @@
 
 <div class="container">
 
-      <div class="row">
+  <div class="row">
 
         <div class="span8">
 
-<div class="bs-docs-example">
+
+          <div class="bs-docs-example">
             <ul class="nav nav-tabs">
-              <li class="active"><a href="">모든영상</a></li>
-              <li><a href="#">5학년</a></li>
-              <li><a href="#">6학년</a></li>
+              <li class="active"><a href="#all" data-toggle="tab">모든영상</a></li>
+              <li><a href="#5th" data-toggle="tab">5학년</a></li>
+              <li><a href="#6th" data-toggle="tab">6학년</a></li>
             </ul>
           </div>
+  
+          <div class="tab-content">
+
+            <div id="all" class="tab-pane active">
 
               <% @casts.each do |cast| %>
-          
-          <div class="post">
+
+                <div class="post">
+
+                  <div class="row">
+
+                    <div class="feat-img span2">
+                        <img src="http://img.youtube.com/vi/<%= cast.video_id %>/hqdefault.jpg" title="featured image" alt="an image was here" />
+                    </div><!-- end featured image -->
+
+                    <div class="details span6">
+
+                      <% if cast.grade_semester == 1 %>
+                      <h4>5학년/6학년 <%= cast.title %></h4>
+                      <% elsif cast.grade_semester == 2 %>
+                      <h4>5학년 1학기 <%= cast.chapter %> : <%= cast.title %></h4>
+                      <% elsif cast.grade_semester == 3 %>
+                      <h4>5학년 2학기 <%= cast.chapter %> : <%= cast.title %></h4>
+                      <% elsif cast.grade_semester == 4 %>
+                      <h4>6학년 1학기 <%= cast.chapter %> : <%= cast.title %></h4>
+                      <% elsif cast.grade_semester == 5 %>
+                      <h4>6학년 1학기 <%= cast.chapter %> : <%= cast.title %></h4>
+                      <% end %>
+                      <p><%= cast.description %></p>
+                                <%= link_to t('.show', :default => t("helpers.links.show")),
+                                cast_path(cast), :class => 'btn btn-mini' %>
+
+                      <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                                  edit_cast_path(cast), :class => 'btn btn-mini' %>
+                      <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                                  cast_path(cast),
+                                  :method => :delete,
+                                  :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                                  :class => 'btn btn-mini btn-danger' %>
+                    </div> <!-- end details -->
+
+                  </div><!-- end post row -->
+
+                </div><!-- end post -->
+
+                <hr>
+            
+              <% end %>
+
+            </div>
+        
+
+            <div id="5th" class="tab-pane">
+              <%= render :partial => 'items_5th' %>
+            </div>
+            
+            <div id="6th" class="tab-pane">
+              <%= render :partial => 'items_6th' %>
+            </div>
+
             <div class="row">
-          <div class="feat-img span2">
-              <img src="http://img.youtube.com/vi/<%= cast.video_id %>/hqdefault.jpg" title="featured image" alt="an image was here" />
-          </div><!-- end featured image -->
-
-          <div class="details span6">
-            <h4><%= cast.title %></h4>
-            <p><%= cast.description %></p>
-                      <%= link_to t('.show', :default => t("helpers.links.show")),
-                      cast_path(cast), :class => 'btn btn-mini' %>
-
-<div id="example" class="modal hide fade in" style="display: none; ">
-            <div class="modal-header">
-              <a class="close" data-dismiss="modal">×</a>
-              <h3>This is a Modal Heading</h3>
+             <div class="span8">
+               <%= link_to t('.new', :default => t("helpers.links.new")),
+               new_cast_path, :class => 'btn btn-large btn-block btn-primary' %>
+             </div>
             </div>
-            <div class="modal-body">
-              <h4>Text in a modal</h4>
-              <p>You can add some text here.</p>            
-            </div>
-            <div class="modal-footer">
-              <a href="#" class="btn btn-success">Call to action</a>
-              <a href="#" class="btn" data-dismiss="modal">Close</a>
-            </div>
+   
           </div>
-
-<a data-toggle="modal" href="#example" class="btn btn-mini">Launch demo modal</a>
-
-
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_cast_path(cast), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      cast_path(cast),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
-          </div> <!-- end details -->
-
-          </div><!-- end post row -->
-
-        </div><!-- end post -->
-<hr>
-            <% end %>
-
-
-<div class="row">
-  <div class="span8">
-    <%= link_to t('.new', :default => t("helpers.links.new")),
-    new_cast_path, :class => 'btn btn-large btn-block btn-primary' %>
-  </div>
-</div>
-
-
 
         </div><!-- end main area -->
 
-        <aside class="span4">
+          <aside class="span4">
           
-          <div class="row">
+            <div class="row">
             
 
-            <div class="widget span4">
-              <h3>Widget Title</h3>
+              <div class="widget span4">
+                <h3>Widget Title</h3>
 
-              <p>
-               Lorem ipsum incididunt labore proident sit laboris ex ullamco reprehenderit esse consequat deserunt proident Ut proident in velit minim cupidatat in reprehenderit nulla Ut qui dolor dolore sunt dolore aliqua Ut qui.  
-              </p>
-            </div><!-- end widget -->
+                <p>
+                 Lorem ipsum incididunt labore proident sit laboris ex ullamco reprehenderit esse consequat deserunt proident Ut proident in velit minim cupidatat in reprehenderit nulla Ut qui dolor dolore sunt dolore aliqua Ut qui.  
+                </p>
+              </div><!-- end widget -->
 
-            <div class="widget span4">
-              <h3>Widget Title</h3>
+              <div class="widget span4">
+                <h3>Widget Title</h3>
 
-              <ul>
-                <li><a href="#">Log In</a></li>
-                <li><a href="#">Log Out</a></li>
-                <li><a href="#">Sign Up</a></li>
-                <li><a href="#">Comment</a></li>
-                <li><a href="#">On This</a></li>
-                <li><a href="#">Post</a></li>
-              </ul>
-            </div><!-- end widget -->
+                <ul>
+                  <li><a href="#">Log In</a></li>
+                  <li><a href="#">Log Out</a></li>
+                  <li><a href="#">Sign Up</a></li>
+                  <li><a href="#">Comment</a></li>
+                  <li><a href="#">On This</a></li>
+                  <li><a href="#">Post</a></li>
+                </ul>
+              </div><!-- end widget -->
 
-            <div class="widget span4">
-              <h3>Widget Title</h3>
+              <div class="widget span4">
+                <h3>Widget Title</h3>
 
-              <p>
-               <img src="http://lorempixel.com/550/325/nature/5" title="widget image" alt="an image was here" />
-              </p>
-            </div><!-- end widget -->
+                <p>
+                 <img src="http://lorempixel.com/550/325/nature/5" title="widget image" alt="an image was here" />
+                </p>
+              </div><!-- end widget -->
 
 
-          </div><!-- end widget row -->
+            </div><!-- end widget row -->
+          </aside><!-- end sidebar -->
 
-        </aside><!-- end sidebar -->
-
-      </div><!-- end row -->
-    </div><!-- end container -->
+  </div>
+</div><!-- end container -->
