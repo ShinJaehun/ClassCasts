@@ -1,4 +1,7 @@
 class CastsController < ApplicationController
+  before_filter :authenticate_user!, :except => [:show, :index]
+  load_and_authorize_resource
+  
   # GET /casts
   # GET /casts.json
   def index
@@ -82,5 +85,5 @@ class CastsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
 end

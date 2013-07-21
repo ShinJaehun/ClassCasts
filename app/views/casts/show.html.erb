@@ -13,8 +13,8 @@
 </dl>
 
 <div class="video-container">
-
-  <iframe width="560" height="315" src=<%= @cast.video_source %> frameborder="0" allowfullscreen></iframe>
+    
+  <iframe width="560" height="315" src="//www.youtube.com/embed/<%= @cast.video_link.split('/').last %>" frameborder="0" allowfullscreen></iframe>
 
   <!--
 	<iframe width="560" height="315" src="//www.youtube.com/embed/<%= @cast.video_link.split('/').last %>" frameborder="0" allowfullscreen></iframe>

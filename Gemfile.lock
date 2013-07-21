@@ -34,6 +34,7 @@ GEM
       rinku (~> 1.5.0)
     bcrypt-ruby (3.0.1)
     builder (3.0.4)
+    cancan (1.6.10)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -134,6 +135,7 @@ PLATFORMS
 
 DEPENDENCIES
   auto_html
+  cancan
   coffee-rails (~> 3.2.1)
   devise
   jquery-rails
