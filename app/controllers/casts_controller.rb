@@ -5,9 +5,13 @@ class CastsController < ApplicationController
   # GET /casts
   # GET /casts.json
   def index
-    @casts = Cast.all(:order => "created_at DESC")
-    @casts_5th = Cast.five.recent
-    @casts_6th = Cast.six.recent
+    #@casts = Cast.all(:order => "created_at DESC")
+    #@casts_5th = Cast.five.recent
+    #@casts_6th = Cast.six.recent
+
+    @casts = Cast.recent.search(params[:search], params[:page])
+    @casts_5th = Cast.five.recent.search(params[:search], params[:page])
+    @casts_6th = Cast.six.recent.search(params[:search], params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

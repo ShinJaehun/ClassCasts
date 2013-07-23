@@ -5,4 +5,10 @@ class Cast < ActiveRecord::Base
   scope :six, where("grade_semester == 4 or grade_semester == 5")
   scope :recent, order("created_at desc")
 
+	def self.search(search, page)
+	  paginate :per_page => 10, :page => page,
+	           :conditions => ['description like ?', "%#{search}%"],
+	           :order => 'created_at DESC'
+	end
+
 end
