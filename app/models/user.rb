@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :posts, :dependent => :destroy
 
   validates_uniqueness_of :username, :email
   # Include default devise modules. Others available are:

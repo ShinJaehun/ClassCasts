@@ -26,7 +26,7 @@
       <div class="nav-collapse">
         <ul class="nav">
           <li><%= link_to "수업영상", casts_path %></li>
-          <li><%= link_to "학습자료" %></li>
+          <li><%= link_to "게시판", posts_path %></li>
           <li><%= link_to "수행평가" %></li>
         </ul>
           <%= render 'layouts/navigation' %>
@@ -47,7 +47,11 @@
   <% end %>
 </div>
 
+
+
   <%= yield %>
+
+
 
 </body>
 

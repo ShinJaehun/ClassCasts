@@ -41,7 +41,7 @@
 <% end %>
 
 
-<%= will_paginate @casts_5th %><!-- pagination -->
+<%= will_paginate @casts_5th, :renderer => 'BootstrapPagination::Rails' %><!-- pagination -->
 
 <%= form_tag casts_path, :class => "form-search", :method => 'get', :id => "casts_search" do %>
   <div class="input-append">

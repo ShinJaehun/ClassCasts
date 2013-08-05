@@ -14,7 +14,9 @@ class Ability
         elsif user.role == "default"
           can :read, :all
           cannot [:create, :update, :destroy], Cast
-      #    can :manage, Post, :user_id => user.id
+
+          can :manage, Post
+          #can :manage, Post, :user_id => user.id
         elsif user.role == "banned"
           cannot :manage, :all
         else

@@ -1,8 +1,19 @@
 ClassCasts::Application.routes.draw do
+  
+
   devise_for :users
 
   resources :casts
+  resources :posts
+  
   match "casts/index" => "casts#index", :as => :index
+  #match "posts/index" => "posts#index", :as => :index
+
+  #resources :users do
+  #  resources :posts
+  #end
+
+  
   root :to => "home#index"
 
   # The priority is based upon order of creation:

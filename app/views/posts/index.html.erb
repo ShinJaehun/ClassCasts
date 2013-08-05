@@ -1,0 +1,90 @@
+<div class="container">
+
+  <div class="row">
+
+        <div class="span8">
+
+  <h4>게시판 </h4>
+ <p class="text-warning"><i class="icon-user">  로그인이 필요합니다.</i></p>
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>번호</th>
+      <th >제목</th>
+      <th>글쓴이</th>
+      <th>날짜</th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead> 
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= link_to post.id, post_path(post) %></td>
+        <td><%= post.title %>     <span class="badge">14</span>
+</td>
+        <td><%= post.user.username %></td>
+        <td><%= post.created_at.strftime("%y.%m.%d") %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_post_path(post), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      post_path(post),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_post_path,
+            :class => 'btn btn-primary' %>
+
+
+        </div><!-- end main area -->
+
+          <aside class="span4">
+          
+            <div class="row">
+            
+
+              <div class="widget span4">
+                <h3>Widget Title</h3>
+
+                <p>
+                 Lorem ipsum incididunt labore proident sit laboris ex ullamco reprehenderit esse consequat deserunt proident Ut proident in velit minim cupidatat in reprehenderit nulla Ut qui dolor dolore sunt dolore aliqua Ut qui.  
+                </p>
+              </div><!-- end widget -->
+
+              <div class="widget span4">
+                <h3>Widget Title</h3>
+
+                <ul>
+                  <li><a href="#">Log In</a></li>
+                  <li><a href="#">Log Out</a></li>
+                  <li><a href="#">Sign Up</a></li>
+                  <li><a href="#">Comment</a></li>
+                  <li><a href="#">On This</a></li>
+                  <li><a href="#">Post</a></li>
+                </ul>
+              </div><!-- end widget -->
+
+              <div class="widget span4">
+                <h3>Widget Title</h3>
+
+                <p>
+                 <img src="http://lorempixel.com/550/325/nature/5" title="widget image" alt="an image was here" />
+                </p>
+              </div><!-- end widget -->
+
+
+            </div><!-- end widget row -->
+          </aside><!-- end sidebar -->
+
+  </div>
+</div><!-- end container -->
+
