@@ -1,12 +1,15 @@
 class PostsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :index]
+  before_filter :prepare_categories
   load_and_authorize_resource
+
 
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    #@posts = Post.all(:order => "created_at DESC")
     #@post = current_user.posts
+    @posts = Post.recent.search(params[:search], params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -29,7 +32,8 @@ class PostsController < ApplicationController
   # GET /posts/new.json
   def new
     @post = Post.new
-    
+    @categories = Category.all
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render :json => @post }
@@ -46,7 +50,6 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(params[:post])
     @post.user_id = current_user.id
-
 
     respond_to do |format|
       if @post.save
@@ -85,5 +88,11 @@ class PostsController < ApplicationController
       format.html { redirect_to posts_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def prepare_categories
+    @categories = Category.all
   end
 end

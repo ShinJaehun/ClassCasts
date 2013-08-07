@@ -1,4 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
+#This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
 # Examples:
@@ -7,3 +7,6 @@
 #   Mayor.create(:name => 'Emanuel', :city => cities.first)
 
 users = User.create([{:email => 'gunsmoke.shin@gmail.com', :username => 'administrator', :password => 'admin', :password_confirmation => 'admin', :role => 'admin'}])
+
+categories = Category.create([{:name => '공지사항'}, {:name => 'FAQ'}, {:name => 'Q&A'}, {:name => '기타'}])
+
