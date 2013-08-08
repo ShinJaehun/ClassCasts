@@ -9,9 +9,9 @@ ClassCasts::Application.routes.draw do
   match "casts/index" => "casts#index", :as => :index
   #match "posts/index" => "posts#index", :as => :index
 
-  #resources :users do
-  #  resources :posts
-  #end
+  resources :posts do
+    resources :comments
+  end
 
   
   root :to => "home#index"

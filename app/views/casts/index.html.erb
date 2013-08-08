@@ -106,37 +106,32 @@
             
 
               <div class="widget span4">
-                <h3>Widget Title</h3>
+                <h3>공지사항</h3>
 
-                <p>
-                 Lorem ipsum incididunt labore proident sit laboris ex ullamco reprehenderit esse consequat deserunt proident Ut proident in velit minim cupidatat in reprehenderit nulla Ut qui dolor dolore sunt dolore aliqua Ut qui.  
-                </p>
+ <% @posts.each do |post| %>
+
+ <% if post.category_id == 1 %>
+<p>
+          <%= link_to post.title, post_path(post) %>
+ </p>
+  <% end %>
+
+<% end %>
+
               </div><!-- end widget -->
 
               <div class="widget span4">
-                <h3>Widget Title</h3>
+                <h3>최근 수업영상</h3>
 
-                <ul>
-                  <li><a href="#">Log In</a></li>
-                  <li><a href="#">Log Out</a></li>
-                  <li><a href="#">Sign Up</a></li>
-                  <li><a href="#">Comment</a></li>
-                  <li><a href="#">On This</a></li>
-                  <li><a href="#">Post</a></li>
-                </ul>
-              </div><!-- end widget -->
+ <% @casts.each do |cast| %>
+<p>
+          <%= link_to cast.title, cast_path(cast) %>
+ </p>
 
-              <div class="widget span4">
-                <h3>Widget Title</h3>
-
-                <p>
-                 <img src="http://lorempixel.com/550/325/nature/5" title="widget image" alt="an image was here" />
-                </p>
-              </div><!-- end widget -->
+<% end %>
 
 
             </div><!-- end widget row -->
           </aside><!-- end sidebar -->
-
   </div>
 </div><!-- end container -->

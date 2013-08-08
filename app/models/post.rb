@@ -1,6 +1,8 @@
 class Post < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
+
+  has_many :comments
   attr_accessible :content, :title, :category_id
 
     scope :recent, order("created_at desc")

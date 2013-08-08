@@ -9,6 +9,17 @@
 </div>
 <p><%= @post.content %></p>
 
+<h2>Comments</h2>
+<% @post.comments.each do |comment| %>
+   <p>
+    <b><%= comment.user.try(:username) %></b>
+    <%= comment.body %>
+  </p>
+<% end %>
+
+<h2>Add a comment:</h2>
+<%= render "comments/form" %>
+
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               posts_path, :class => 'btn'  %>

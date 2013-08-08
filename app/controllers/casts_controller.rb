@@ -12,6 +12,8 @@ class CastsController < ApplicationController
     @casts = Cast.recent.search(params[:search], params[:page])
     @casts_5th = Cast.five.recent.search(params[:search], params[:page])
     @casts_6th = Cast.six.recent.search(params[:search], params[:page])
+        @posts = Post.recent.search(params[:search], params[:page])
+
 
     respond_to do |format|
       format.html # index.html.erb

@@ -10,6 +10,8 @@ class PostsController < ApplicationController
     #@posts = Post.all(:order => "created_at DESC")
     #@post = current_user.posts
     @posts = Post.recent.search(params[:search], params[:page])
+    @casts = Cast.recent.search(params[:search], params[:page])
+
 
     respond_to do |format|
       format.html # index.html.erb

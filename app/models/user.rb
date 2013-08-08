@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
   has_many :posts, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
+
+  #accepts_nested_attributes_for :comments
 
   validates_uniqueness_of :username, :email
   # Include default devise modules. Others available are:
