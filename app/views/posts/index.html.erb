@@ -3,10 +3,10 @@
   <div class="row">
 
         <div class="span8">
-
  
 
 <table class="table table-striped">
+
   <thead>
     <tr>
       <th>번호</th>
@@ -17,7 +17,8 @@
     </tr>
   </thead> 
   <tbody>
-    <% @posts.each do |post| %>
+      <% @posts.each do |post| %>
+
       <tr>
         <td><%= post.id %></td>
         <td>
@@ -43,11 +44,15 @@
           <% end %>
         </td>
       </tr>
-    <% end %>
+
+
+<% end %>
+    
   </tbody>
+
 </table>
 
-              <%= will_paginate @posts, :renderer => 'BootstrapPagination::Rails' %><!-- pagination -->
+       <%= will_paginate @posts, :renderer => 'BootstrapPagination::Rails' %><!-- pagination -->
 
               <%= form_tag posts_path, :class => "form-search", :method => 'get', :id => "posts_search" do %>
                 <div class="input-append">
@@ -60,41 +65,64 @@
 
               <% end %><!-- search -->
 
-       
+
         </div><!-- end main area -->
 
           <aside class="span4">
           
             <div class="row">
             
-
               <div class="widget span4">
-                <h3>공지사항</h3>
+                <h3>수업영상</h3>
 
- <% @posts.each do |post| %>
-
- <% if post.category_id == 1 %>
-<p>
-          <%= link_to post.title, post_path(post) %>
- </p>
-  <% end %>
-
-<% end %>
-
-              </div><!-- end widget -->
-
-              <div class="widget span4">
-                <h3>최근 수업영상</h3>
-
- <% @casts.each do |cast| %>
+ <% @casts5.each do |cast| %>
 <p>
           <%= link_to cast.title, cast_path(cast) %>
  </p>
 
 <% end %>
 
-
             </div><!-- end widget row -->
+
+              <div class="widget span4">
+                <h3>공지사항</h3>
+
+ <% @notice5.each do |post| %>
+
+ <p>
+          <%= link_to post.title, post_path(post) %>
+ </p>
+  <% end %>
+
+              </div><!-- end widget -->
+
+              <div class="widget span4">
+                <h3>FAQ</h3>
+
+ <% @faq5.each do |post| %>
+
+<p>
+          <%= link_to post.title, post_path(post) %>
+ </p>
+
+<% end %>
+
+              </div><!-- end widget -->
+
+              <div class="widget span4">
+                <h3>질문과 답변</h3>
+
+ <% @qna5.each do |post| %>
+
+<p>
+          <%= link_to post.title, post_path(post) %>
+ </p>
+
+<% end %>
+
+              </div><!-- end widget -->
+
+</div>
           </aside><!-- end sidebar -->
 
   </div>

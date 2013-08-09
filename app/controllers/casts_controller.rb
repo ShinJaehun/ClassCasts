@@ -12,7 +12,12 @@ class CastsController < ApplicationController
     @casts = Cast.recent.search(params[:search], params[:page])
     @casts_5th = Cast.five.recent.search(params[:search], params[:page])
     @casts_6th = Cast.six.recent.search(params[:search], params[:page])
-        @posts = Post.recent.search(params[:search], params[:page])
+
+    @notice5 = Post.notice.just5
+    @faq5 = Post.faq.just5
+    @qna5 = Post.qna.just5
+    @casts5 = Cast.just5
+
 
 
     respond_to do |format|

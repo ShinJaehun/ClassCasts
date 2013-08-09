@@ -6,7 +6,7 @@
         <div class="span8">
 <div class="page-header">
   <h4><%= @post.title %></h4>
-<p class="text-info"><%= @post.category.name %>   <%= @post.user.username %>  <%= @post.created_at.strftime("%y.%m.%d") %></p>
+<p class="text-info"><%= @post.category.try(:name) %>   <%= @post.user.username %>  <%= @post.created_at.strftime("%y.%m.%d") %></p>
 </div>
 <p><%= @post.content %></p>
 <br>

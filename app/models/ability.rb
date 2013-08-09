@@ -18,7 +18,9 @@ class Ability
           cannot :manage, Category
 
           can :manage, Post, :user_id => user.id
-          cannot [:create, :update, :destroy], Post, :category_id => 1
+          cannot [:create, :update, :destroy], Post, :category => {:number => 1}
+
+          can :manage, Comment, :user_id => user.id
 
         elsif user.role == "banned"
           cannot :manage, :all

@@ -4,7 +4,7 @@
 
 <%= form_for([@post, @post.comments.build]) do |f| %>
         <div class="controls">
-          <%= f.text_area :body, :class => 'text_area', :rows => '6' %>
+          <%= f.text_area :body, :class => 'text_area span4', :rows => '6', :placeholder => '로그인한 다음 댓글을 남길 수 있습니다.'%>
         </div>
 
   <div class="actions">

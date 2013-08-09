@@ -100,38 +100,63 @@
 
         </div><!-- end main area -->
 
+
           <aside class="span4">
           
             <div class="row">
             
-
               <div class="widget span4">
-                <h3>공지사항</h3>
+                <h3>수업영상</h3>
 
- <% @posts.each do |post| %>
-
- <% if post.category_id == 1 %>
-<p>
-          <%= link_to post.title, post_path(post) %>
- </p>
-  <% end %>
-
-<% end %>
-
-              </div><!-- end widget -->
-
-              <div class="widget span4">
-                <h3>최근 수업영상</h3>
-
- <% @casts.each do |cast| %>
+ <% @casts5.each do |cast| %>
 <p>
           <%= link_to cast.title, cast_path(cast) %>
  </p>
 
 <% end %>
 
-
             </div><!-- end widget row -->
+
+              <div class="widget span4">
+                <h3>공지사항</h3>
+
+ <% @notice5.each do |post| %>
+
+ <p>
+          <%= link_to post.title, post_path(post) %>
+ </p>
+  <% end %>
+
+              </div><!-- end widget -->
+
+              <div class="widget span4">
+                <h3>FAQ</h3>
+
+ <% @faq5.each do |post| %>
+
+<p>
+          <%= link_to post.title, post_path(post) %>
+ </p>
+
+<% end %>
+
+              </div><!-- end widget -->
+
+              <div class="widget span4">
+                <h3>질문과 답변</h3>
+
+ <% @qna5.each do |post| %>
+
+<p>
+          <%= link_to post.title, post_path(post) %>
+ </p>
+
+<% end %>
+
+              </div><!-- end widget -->
+
+</div>
           </aside><!-- end sidebar -->
+
   </div>
 </div><!-- end container -->

@@ -1,16 +1,21 @@
 
 <div class="container">
   <div class="row-fluid show-grid">
-      <div class="span5 offset1 counterLeft well">
+      <div class="span4 offset1 counterLeft well">
 
   <strong><%= comment.user.try(:username) %> <%= comment.created_at.strftime("%y.%m.%d") %></strong>
-  <br>
+<p>
     <%= comment.body %>
+</p>
 
+<p>
+<% if can? :destroy, comment %>
+  <%= link_to '댓글삭제', [comment.post, comment],
+               :confirm => 'Are you sure?',
+               :method => :delete %>
+<% end %>
+</p>
     </div>
   </div>
 </div>
-
-
-
 
