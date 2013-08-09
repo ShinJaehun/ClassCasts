@@ -1,3 +1,4 @@
+
 <div class="container">
 
   <div class="row">
@@ -5,19 +6,15 @@
         <div class="span8">
 <div class="page-header">
   <h4><%= @post.title %></h4>
-<p class="text-info"><%= @post.user.username %>  <%= @post.created_at.strftime("%y.%m.%d") %></p>
+<p class="text-info"><%= @post.category.name %>   <%= @post.user.username %>  <%= @post.created_at.strftime("%y.%m.%d") %></p>
 </div>
 <p><%= @post.content %></p>
+<br>
 
-<h2>Comments</h2>
-<% @post.comments.each do |comment| %>
-   <p>
-    <b><%= comment.user.try(:username) %></b>
-    <%= comment.body %>
-  </p>
-<% end %>
+<!-- 댓글 -->
+ <%= render @post.comments %>
 
-<h2>Add a comment:</h2>
+<!-- 댓글달기-->
 <%= render "comments/form" %>
 
 <div class="form-actions">

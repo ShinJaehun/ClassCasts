@@ -2,7 +2,7 @@ class Post < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
 
-  has_many :comments
+  has_many :comments, :dependent => :destroy
   attr_accessible :content, :title, :category_id
 
     scope :recent, order("created_at desc")

@@ -1,5 +1,16 @@
 
-<p>
-  <b><%= comment.user.username %></b>
+<div class="container">
+  <div class="row-fluid show-grid">
+      <div class="span5 offset1 counterLeft well">
+
+  <strong><%= comment.user.try(:username) %> <%= comment.created_at.strftime("%y.%m.%d") %></strong>
+  <br>
     <%= comment.body %>
-</p>
+
+    </div>
+  </div>
+</div>
+
+
+
+
