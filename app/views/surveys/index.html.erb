@@ -1,0 +1,80 @@
+<div class="container">
+
+  <div class="row">
+
+        <div class="span8">
+ 
+<% @surveys.each do |survey| %>
+  <h4><%= link_to survey.name, survey %></h4>
+  <p><%= survey.description %></p>
+  <hr />
+<% end %>
+
+<div class="actions">
+  <%= link_to 'Add New Survey', new_survey_path, :class => "btn btn-primary" %>
+</div>
+
+
+        </div><!-- end main area -->
+
+          <aside class="span4">
+          
+            <div class="row">
+            
+              <div class="widget span4">
+                <h3>수업영상</h3>
+
+ <% @casts5.each do |cast| %>
+<p>
+          <%= link_to cast.title, cast_path(cast) %>
+ </p>
+
+<% end %>
+
+            </div><!-- end widget row -->
+
+              <div class="widget span4">
+                <h3>공지사항</h3>
+
+ <% @notice5.each do |post| %>
+
+ <p>
+          <%= link_to post.title, post_path(post) %>
+ </p>
+  <% end %>
+
+              </div><!-- end widget -->
+
+              <div class="widget span4">
+                <h3>FAQ</h3>
+
+ <% @faq5.each do |post| %>
+
+<p>
+          <%= link_to post.title, post_path(post) %>
+ </p>
+
+<% end %>
+
+              </div><!-- end widget -->
+
+              <div class="widget span4">
+                <h3>질문과 답변</h3>
+
+ <% @qna5.each do |post| %>
+
+<p>
+          <%= link_to post.title, post_path(post) %>
+ </p>
+
+<% end %>
+
+              </div><!-- end widget -->
+
+</div>
+          </aside><!-- end sidebar -->
+
+  </div>
+</div><!-- end container -->
+
+

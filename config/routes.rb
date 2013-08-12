@@ -1,13 +1,18 @@
 ClassCasts::Application.routes.draw do
   
 
+
+
+
   devise_for :users
 
   resources :casts
   resources :posts
-  
+  resources :surveys
+
+
   match "casts/index" => "casts#index", :as => :index
-  #match "posts/index" => "posts#index", :as => :index
+  #match "surveys/index" => "surveys#index", :as => :index
 
   resources :posts do
     resources :comments

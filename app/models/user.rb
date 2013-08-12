@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   #has_many :comments, :dependent => :destroy
   has_many :posts
   has_many :comments
+  has_many :surveys
 
   #accepts_nested_attributes_for :comments
 
