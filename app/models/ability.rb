@@ -22,6 +22,8 @@ class Ability
 
           can :manage, Comment, :user_id => user.id
 
+          cannot [:create, :update, :destroy], Survey
+
         elsif user.role == "banned"
           cannot :manage, :all
         else

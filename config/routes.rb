@@ -8,17 +8,31 @@ ClassCasts::Application.routes.draw do
 
   resources :casts
   resources :posts
-  resources :surveys
-
-
+  
+  resources :surveys do
+   collection do
+     get 'results'
+   end
+  end
+  
   match "casts/index" => "casts#index", :as => :index
-  #match "surveys/index" => "surveys#index", :as => :index
+  match "surveys/grading" => "surveys#grading", :via => :post
+
+
 
   resources :posts do
     resources :comments
   end
 
+  #resources :surveys do
+   # resources :questions
+  #end
   
+  #resources :questions do
+  #  resources :answers
+  #end
+
+
   root :to => "home#index"
 
   # The priority is based upon order of creation:

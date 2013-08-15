@@ -1,4 +1,7 @@
 class SurveysController < ApplicationController
+  #before_filter :authenticate_user!, :except => [:show, :index]
+  #load_and_authorize_resource
+  
   # GET /surveys
   # GET /surveys.json
   def index
@@ -8,17 +11,33 @@ class SurveysController < ApplicationController
     @qna5 = Post.qna.just5
     @casts5 = Cast.just5
 
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @surveys }
     end
   end
 
+  def grading
+    #@survey = Survey.find(params[:id])
+    @survey = Survey.new
+
+    redirect_to results_surveys_path  (@survey)
+  end
+
+  def results
+  end
+
   # GET /surveys/1
   # GET /surveys/1.json
   def show
     @survey = Survey.find(params[:id])
+      
+    #여기서부터 오류 발생 가능성 있음...//survey를 저장하니 비어있는 question과 answer가 생성됨;;;
+    #@question = @survey.questions.build(params[:survey])
+    #@question.save
+    #@answer =  @question.answers.build(params[:question])
+    #@answer.save
+
 
     respond_to do |format|
       format.html # show.html.erb
