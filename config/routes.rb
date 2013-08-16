@@ -1,24 +1,27 @@
 ClassCasts::Application.routes.draw do
   
-
-
-
-
   devise_for :users
 
   resources :casts
   resources :posts
   
   resources :surveys do
-   collection do
+   member do
+     get 'answering'
+     post 'grading'
      get 'results'
    end
   end
-  
+    
+  #resources :surveys do
+  #  member do
+  #     get 'results'
+  #end
+    
   match "casts/index" => "casts#index", :as => :index
-  match "surveys/grading" => "surveys#grading", :via => :post
-
-
+  #match "surveys/answering" => "surveys#answering", :via => :post
+  
+  #match "surveys/grading" => "surveys#grading", :via => :post
 
   resources :posts do
     resources :comments

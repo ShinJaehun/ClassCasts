@@ -1,5 +1,6 @@
 class SurveysController < ApplicationController
   #before_filter :authenticate_user!, :except => [:show, :index]
+  #before_filter :user_definition
   #load_and_authorize_resource
   
   # GET /surveys
@@ -17,32 +18,43 @@ class SurveysController < ApplicationController
     end
   end
 
-  def grading
-    #@survey = Survey.find(params[:id])
-    @survey = Survey.new
+  def answering
+      @survey = Survey.find(params[:id])
+   end
 
-    redirect_to results_surveys_path  (@survey)
-  end
+  def grading
+      #@survey = Survey.where(params[:id])  
+      #@survey.user_id = current_user.id
+      @survey = Survey.find(params[:id])
+      
+         @survey.questions.each do |q|
+           q.auto_check 
+           self.save!
+         end    
+
+    #redirect_to results_survey_path(@survey)
+
+ end
 
   def results
+      @survey = Survey.where(params[:id])
   end
 
   # GET /surveys/1
   # GET /surveys/1.json
   def show
     @survey = Survey.find(params[:id])
-      
+    redirect_to surveys_path()      
     #여기서부터 오류 발생 가능성 있음...//survey를 저장하니 비어있는 question과 answer가 생성됨;;;
     #@question = @survey.questions.build(params[:survey])
     #@question.save
     #@answer =  @question.answers.build(params[:question])
     #@answer.save
 
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render :json => @survey }
-    end
+    #respond_to do |format|
+    #  format.html # show.html.erb
+    #  format.json { render :json => @survey }
+    #end
   end
 
   # GET /surveys/new
@@ -110,4 +122,11 @@ class SurveysController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+#private
+
+#def user_definition
+#     @survey.user_id = current_user.id
+#end
+
 end

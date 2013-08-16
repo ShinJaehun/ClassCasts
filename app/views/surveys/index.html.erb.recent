@@ -4,44 +4,16 @@
 
         <div class="span8">
  
-
-<table class="table table-striped">
-
-  <thead>
-    <tr>
-      <th >제목</th>
-      <th>내용</th>
-      <th><% if can? :manage, @survey %><% end %></th>
-    </tr>
-  </thead> 
-  <tbody>
-      <% @surveys.each do |survey| %>
-      <tr>
-        <td><%= survey.name %></td>
-        <td><%= survey.description %></td>
-        <td>
-          <%= link_to t('.answering', :default => t("helpers.links.answering")),
-                      answering_survey_path(survey), :class => 'btn btn-mini' %>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_survey_path(survey), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers<.links.destroy")),
-                      survey_path(survey),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
-        </td>
-      </tr>
-
-
+<% @surveys.each do |survey| %>
+  <h4><%= link_to survey.name, survey %></h4>
+  <p><%= survey.description %></p>
+  <hr />
 <% end %>
-    
-  </tbody>
-
-</table>
 
 <div class="actions">
   <%= link_to 'Add New Survey', new_survey_path, :class => "btn btn-primary" %>
 </div>
+
 
         </div><!-- end main area -->
 
