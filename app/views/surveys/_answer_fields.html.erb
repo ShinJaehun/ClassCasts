@@ -1,5 +1,7 @@
 <p class="fields offset1">
-  <%= f.check_box :correct %>
+  <%= f.input :correct %>
+  <%= f.hidden_field :_destroy %>
+
   <%= f.label :content, "Answer" %>
   <%= f.text_field :content %>
   <%= link_to_remove_fields "remove", f %>

@@ -20,8 +20,7 @@
         <td><%= survey.name %></td>
         <td><%= survey.description %></td>
         <td>
-          <%= link_to t('.answering', :default => t("helpers.links.answering")),
-                      answering_survey_path(survey), :class => 'btn btn-mini' %>
+          <%= link_to "Evaluation", new_survey_grade_path(survey), :class => 'btn btn-mini' %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_survey_path(survey), :class => 'btn btn-mini' %>
           <%= link_to t('.destroy', :default => t("helpers<.links.destroy")),

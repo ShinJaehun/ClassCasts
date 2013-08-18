@@ -4,14 +4,19 @@ ClassCasts::Application.routes.draw do
 
   resources :casts
   resources :posts
+  resources :surveys
+   resources :surveys, :only => [] do
+      resources :grades, :except => [:destroy]
+    end
   
-  resources :surveys do
-   member do
-     get 'answering'
-     post 'grading'
-     get 'results'
-   end
-  end
+  #resources :surveys
+  #resources :surveys do
+  # member do
+   #  get 'answering'
+   #  post 'grading'
+   #  get 'results'
+  # end
+  #end
     
   #resources :surveys do
   #  member do

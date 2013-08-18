@@ -1,6 +1,5 @@
 class Answer < ActiveRecord::Base
   belongs_to :question
-
-  attr_accessible :content, :correct, :question_id, :user_answer
+  belongs_to :survey
+  attr_accessible :content, :question_id, :correct
 end
-

@@ -2,8 +2,8 @@
 
 one:
   content: MyText
-  survey_id: 1
+  survey: 
 
 two:
   content: MyText
-  survey_id: 1
+  survey: 

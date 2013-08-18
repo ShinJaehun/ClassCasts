@@ -1,9 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  content: MyString
+  choice: 1
+  is_correct: 1
+  survey: 
+  user: 
   question: 
 
 two:
-  content: MyString
+  choice: 1
+  is_correct: 1
+  survey: 
+  user: 
   question: 

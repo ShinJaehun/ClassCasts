@@ -7,10 +7,12 @@ class SurveysController < ApplicationController
   # GET /surveys.json
   def index
     @surveys = Survey.all
+  
     @notice5 = Post.notice.just5
     @faq5 = Post.faq.just5
     @qna5 = Post.qna.just5
     @casts5 = Cast.just5
+
 
     respond_to do |format|
       format.html # index.html.erb
@@ -19,7 +21,16 @@ class SurveysController < ApplicationController
   end
 
   def answering
+   #   @user_answer = User_answer.new
       @survey = Survey.find(params[:id])
+    #render (:action => 'results', :object => @survey)
+    #  @survey.questions.each do |q|
+    #   @user_answer = q.build_user_answer
+    #  end
+
+      #@user_answer =  User_answer.new
+
+
    end
 
   def grading
@@ -65,17 +76,17 @@ class SurveysController < ApplicationController
   # GET /surveys/1.json
   def show
     @survey = Survey.find(params[:id])
-    redirect_to surveys_path()      
+    #redirect_to surveys_path()      
     #여기서부터 오류 발생 가능성 있음...//survey를 저장하니 비어있는 question과 answer가 생성됨;;;
     #@question = @survey.questions.build(params[:survey])
     #@question.save
     #@answer =  @question.answers.build(params[:question])
     #@answer.save
 
-    #respond_to do |format|
-    #  format.html # show.html.erb
-    #  format.json { render :json => @survey }
-    #end
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render :json => @survey }
+    end
   end
 
   # GET /surveys/new

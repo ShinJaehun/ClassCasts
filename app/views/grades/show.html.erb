@@ -1,0 +1,26 @@
+<main>
+  <header class="page-header">
+<h2>결과 : <%= @survey.name %></h2>
+</header>
+<ol>
+  <% for question in @survey.questions %>
+  <li><%= h question.content %> </li>
+  <ul>
+  	   
+
+    <% for answer in question.answers %>
+      <li>	<%= h answer.content %>
+	<% if answer.correct == true %>
+		<i class="icon-ok icon-green"></i>
+	<% end %>
+      </li>
+      <li>
+    <% for answer in @response_answers %>
+          <%= h answer.content %>
+      	
+    <% end %>
+    </li>
+    <% end %>
+  </ul>
+  <% end %>
+</ol>

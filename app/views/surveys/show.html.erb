@@ -1,29 +1,19 @@
-<!-- redire_to를 이용해서 show를 거치지 않고 바로 index로 나감 -->
+<h4> <%=h @survey.name %></h4>
 
-<h1><%= @survey.name %></h1>
- <%= form_tag({:controller => "surveys", :action => "grading"}) do %>
-  <ol class="questions">
-   <% @survey.questions.each do |question| %>
-   <li>
-   <strong><%= question.content %></strong>
-    <ol class="checkbox">
-     <% question.answers.each do |answer| %>
-     
-       <%= check_box(answer.user_answer, answer)  %>
-       <%= label("answer_".concat(answer.id.to_s).to_sym, answer.content) %>
-     <% end %>
-     </ol>
-     <hr />
-   </li>
-   <% end %>
-  </ol>
-
-  <div><%= submit_tag("Submit", :class => "submit") %></div>
-
+<ol>
+  <% for question in @survey.questions %>
+  <li><%= h question.content %></li>
+  <ul>
+    <% for answer in question.answers %>
+      <li><%= h answer.content %></li>
+    <% end %>
+  </ul>
+  <% end %>
+</ol>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
-              surveys_path, :class => 'btn'  %>
+              surveys_path(), :class => 'btn'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_survey_path(@survey), :class => 'btn' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
@@ -32,6 +22,3 @@
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
 </div>
-
-
-<% end %>

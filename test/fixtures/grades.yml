@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  content: MyString
-  question: 
+  average_grade: 1
+  survey: 
 
 two:
-  content: MyString
-  question: 
+  average_grade: 1
+  survey: 
