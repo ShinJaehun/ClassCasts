@@ -1,4 +1,0 @@
-class QuestionsController < ApplicationController
-
- 
-end
