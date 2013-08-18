@@ -24,20 +24,41 @@ class SurveysController < ApplicationController
 
   def grading
       #@survey = Survey.where(params[:id])  
-      #@survey.user_id = current_user.id
-      @survey = Survey.find(params[:id])
       
-         @survey.questions.each do |q|
-           q.auto_check 
-           self.save!
-         end    
+      @survey = Survey.find(params[:id])
+      @survey.user_id = current_user.id
+      
+             @survey.questions.each do |q|        
+      #             q.init
+                   #params[:a_checkbox] ||= []
+                   params[:a_checkbox].each do |check|
+                      q.update(check)
+                   end
+                    q.auto_check
+             end
+            
+  
+#def auto_check
+    #for a in answers
+    #answers.each do |a|
+    #a = params[:answer]
+ #   self.is_correct = true  if answer.user_answer == true and answer.correct == true
+  #  self.save!
+#end
+# end
+        
+
+         #@survey.questions.each do  |q| 
+         #  q.auto_check
+         #end    
 
     #redirect_to results_survey_path(@survey)
+    render (:action => 'results', :object => @survey)
 
  end
 
   def results
-      @survey = Survey.where(params[:id])
+      #@survey = Survey.where(params[:survey_id])
   end
 
   # GET /surveys/1
@@ -61,10 +82,10 @@ class SurveysController < ApplicationController
   # GET /surveys/new.json
   def new
     @survey = Survey.new
-    #3.times do
-    # question =  @survey.questions.build
-    # 4.times { question.answers.build }
-    #end
+    3.times do
+     question =  @survey.questions.build
+     4.times { question.answers.build }
+    end
   
     #respond_to do |format|
     #  format.html # new.html.erb
@@ -81,8 +102,6 @@ class SurveysController < ApplicationController
   # POST /surveys.json
   def create
     @survey = Survey.new(params[:survey])
-    @survey.user_id = current_user.id
-
     
     respond_to do |format|
       if @survey.save
@@ -128,5 +147,6 @@ class SurveysController < ApplicationController
 #def user_definition
 #     @survey.user_id = current_user.id
 #end
+
 
 end

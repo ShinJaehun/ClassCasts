@@ -1,3 +1,5 @@
+<!-- redire_to를 이용해서 show를 거치지 않고 바로 index로 나감 -->
+
 <h1><%= @survey.name %></h1>
  <%= form_tag({:controller => "surveys", :action => "grading"}) do %>
   <ol class="questions">

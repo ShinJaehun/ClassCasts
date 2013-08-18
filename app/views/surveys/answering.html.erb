@@ -5,9 +5,10 @@
    <li>
    <strong><%= question.content %></strong>
     <ol class="checkbox">
+
+
      <% question.answers.each do |answer| %>
-     
-       <%= check_box(answer.user_answer, answer)  %>
+       <%= check_box_tag "a_checkbox[]", answer.id %>
        <%= label("answer_".concat(answer.id.to_s).to_sym, answer.content) %>
      <% end %>
      </ol>
@@ -16,7 +17,7 @@
    <% end %>
   </ol>
 
-  <div><%= submit_tag("Submit", :class => "submit") %></div>
+    <div><%= submit_tag("Submit", :class => "submit") %></div>
 
 
 <div class="form-actions">
