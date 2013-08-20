@@ -10,14 +10,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130818110803) do
+ActiveRecord::Schema.define(:version => 20130820075326) do
 
   create_table "answers", :force => true do |t|
     t.string   "content"
     t.integer  "question_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.boolean  "correct"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.boolean  "correct",     :default => false
+    t.boolean  "user_answer", :default => false
   end
 
   add_index "answers", ["question_id"], :name => "index_answers_on_question_id"
@@ -50,15 +51,6 @@ ActiveRecord::Schema.define(:version => 20130818110803) do
   add_index "comments", ["post_id"], :name => "index_comments_on_post_id"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
-  create_table "grades", :force => true do |t|
-    t.integer  "average_grade"
-    t.integer  "survey_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
-  add_index "grades", ["survey_id"], :name => "index_grades_on_survey_id"
-
   create_table "posts", :force => true do |t|
     t.string   "title"
     t.text     "content"
@@ -75,8 +67,10 @@ ActiveRecord::Schema.define(:version => 20130818110803) do
   create_table "questions", :force => true do |t|
     t.text     "content"
     t.integer  "survey_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "is_correct", :default => false
+    t.text     "explain"
   end
 
   add_index "questions", ["survey_id"], :name => "index_questions_on_survey_id"

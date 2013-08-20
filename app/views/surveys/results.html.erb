@@ -2,13 +2,14 @@
 
 <ol>
   <% for question in @survey.questions %>
-  <li><%= h question.content %> Is correct? <%= question.is_correct %></li>
+  <li><%= h question.content %></li>
   <ul>
-    <% for answer in question.answers %>
+    <% for answer in question.answers %>  
       <li>	<%= h answer.content %>
-	<% if answer.user_answer == true %>
-		<i class="icon-ok icon-green"></i>
-	<% end %>
+  <% if @checked.include?(answer.id.to_s) %>
+     <i class="icon-ok icon-green"></i>
+  <% end %>
+
       </li>
     <% end %>
   </ul>

@@ -1,6 +1,7 @@
 class Grade < ActiveRecord::Base
   belongs_to :survey
-  attr_accessible :average_grade, :survey_id
+  belongs_to :user
+  attr_accessible :average_grade, :survey_id, :user_id
 
   attr_accessor :answer
 
@@ -9,6 +10,7 @@ class Grade < ActiveRecord::Base
     total = correct_answers.length.to_f
     correct = Grade.correct!(correct_answers, responses)
     average = (correct / total) * 100
+    #average_grade = (correct / total) * 100
   end
 
   def self.correct!(correct_answers, responses) # Returns number of correct answers

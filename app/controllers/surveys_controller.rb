@@ -29,35 +29,24 @@ class SurveysController < ApplicationController
     #  end
 
       #@user_answer =  User_answer.new
-
-
+ 
    end
 
   def grading
       #@survey = Survey.where(params[:id])  
-      
       @survey = Survey.find(params[:id])
       @survey.user_id = current_user.id
-      
-             @survey.questions.each do |q|        
-      #             q.init
-                   #params[:a_checkbox] ||= []
-                   params[:a_checkbox].each do |check|
-                      q.update(check)
-                   end
-                    q.auto_check
-             end
-            
-  
-#def auto_check
-    #for a in answers
-    #answers.each do |a|
-    #a = params[:answer]
- #   self.is_correct = true  if answer.user_answer == true and answer.correct == true
-  #  self.save!
-#end
-# end
-        
+ 
+      #      @survey.questions.each do |q|        
+      #             @checked = params[:a_checkbox]
+      #             params[:a_checkbox].each do |check|
+      #                q.update(check)
+      #             end
+                    #q.auto_check
+      #       end
+        #  @checked = params[:questions][:answers]  
+
+    @checked = params[:a_checkbox]
 
          #@survey.questions.each do  |q| 
          #  q.auto_check
@@ -69,7 +58,18 @@ class SurveysController < ApplicationController
  end
 
   def results
-      #@survey = Survey.where(params[:survey_id])
+            # @checked = params[:a_checkbox]
+   # @checked.each do |c|
+  #  @a =  Answer.find_by_id(c)
+   #  end     
+  #   @question = @survey.questions.find(params[:id])
+  
+  #  @survey.questions.each do |q|
+  #  @choice = q.answer.include?(@checked)
+ # end
+   # @correct_answers = @survey.answers.select('answers.id, answers.correct').where(:correct => true).pluck('answers.id').to_a
+
+      #@survey = @survey.questions.(params[:survey_id])
   end
 
   # GET /surveys/1
@@ -93,10 +93,11 @@ class SurveysController < ApplicationController
   # GET /surveys/new.json
   def new
     @survey = Survey.new
-    3.times do
-     question =  @survey.questions.build
-     4.times { question.answers.build }
-    end
+
+#    3.times do
+ #    question =  @survey.questions.build
+  #   4.times { question.answers.build }
+   # end
   
     #respond_to do |format|
     #  format.html # new.html.erb

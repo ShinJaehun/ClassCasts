@@ -1,7 +1,9 @@
 <div class = "fields offset1">
   <p>
-      <%= f.label :content, "Question" %>
+      <%= f.label :content, "문제" %>
       <%= f.text_area :content, :rows => 3 %>
+      <%= f.label :explain, "해설" %>
+      <%= f.text_area :explain, :rows => 3 %>
       <%= f.hidden_field :_destroy %>
 
       <%= link_to_remove_fields "remove", f %><br />

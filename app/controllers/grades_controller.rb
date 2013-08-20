@@ -1,4 +1,6 @@
 class GradesController < ApplicationController
+  before_filter :authenticate_user!, :except => [:show]
+  #load_and_authorize_resource
 
  def show
     #@grade = Grade.find(params[:id])
@@ -14,7 +16,7 @@ class GradesController < ApplicationController
 
     @survey = Survey.find_by_id(params[:survey_id])
     @grade = @survey.grades.where(:survey_id => params[:survey_id])
-    @response_answers = params[:questions]    
+    #@response_answers = params[:questions]    
 
   end
 
@@ -23,21 +25,21 @@ class GradesController < ApplicationController
     @questions = @survey.questions.includes(:answers)
     #@grade = @survey.build_grade
     @grade = @survey.grades.new
-
   end
 
   def create
     @survey = Survey.find_by_id(params[:survey_id])
     @questions = @survey.questions.includes(:answers)
-    #@grade = @survey.build_grade
     @grade = @survey.grades.new
-    @correct_answers = @survey.answers.select('answers.id, answers.correct').where(:correct => true).pluck('answers.id').to_a
+    #@grade.user_id = current_user.id
 
+    @correct_answers = @survey.answers.select('answers.id, answers.correct').where(:correct => true).pluck('answers.id').to_a
     @response_answers = params[:questions]
-    @response_answers.save
+    #redirect_to params[:questions].merge({:action => 'results'})
+    #@checked_answers = params[:questions][:answers]
 
     @grade.average_grade = @grade.calculate_grade(@correct_answers, @response_answers)
-    @grade.survey_id = @survey.id
+    #@grade.survey_id = @survey.id
         
     if @grade.save
       redirect_to survey_grade_path(@survey, @grade), :notice => t("ui.grades.take_exam.success")
