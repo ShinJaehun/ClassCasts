@@ -3,7 +3,7 @@ class Question < ActiveRecord::Base
   has_many :answers, :dependent => :destroy, :order => 'created_at desc'
   accepts_nested_attributes_for :answers, :reject_if => lambda {|a| a[:content].blank?}, :allow_destroy => true
 
-  attr_accessible :content, :survey_id, :answers_attributes, :is_correct
+  attr_accessible :content, :survey_id, :answers_attributes, :is_correct, :explain
 
 def init
 #    self.is_correct = false

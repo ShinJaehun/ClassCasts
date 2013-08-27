@@ -1,4 +1,6 @@
-<h1><%= @survey.name %></h1>
+<h4><%= @survey.name %></h4>
+<hr>
+  
  <%= form_tag({:controller => "surveys", :action => "grading"}) do %>
   <ol class="questions">
    <% @survey.questions.each do |question| %>
@@ -16,20 +18,14 @@
    <% end %>
   </ol>
 
-    <div><%= submit_tag("Submit", :class => "submit") %></div>
+    <div>
+        
+        <%= button_tag(:type => "submit", :class => "btn btn-default") do %>
+         <%= t('.submit')%>
+        <% end %>
 
-
-<div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
+        <%= link_to t('.back', :default => t("helpers.links.back")),
               surveys_path, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_survey_path(@survey), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              survey_path(@survey),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
-</div>
-
+    </div>
 
 <% end %>

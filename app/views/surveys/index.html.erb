@@ -2,10 +2,10 @@
 
   <div class="row">
 
-        <div class="span8">
+    <div class="span8">
  
 
-<table class="table table-striped">
+      <table class="table table-striped">
 
   <thead>
     <tr>
@@ -21,14 +21,18 @@
         <td><%= survey.description %></td>
         <td>
         <%= link_to t('.answering', :default => t("helpers.links.answering")),
-                      answering_survey_path(survey), :class => 'btn btn-mini' %>          
-	<%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      answering_survey_path(survey), :class => 'btn btn-mini' %>
+        <% if can? :edit, survey %>
+	  <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_survey_path(survey), :class => 'btn btn-mini' %>
+        <% end %>
+         <% if can? :destroy, survey %>
           <%= link_to t('.destroy', :default => t("helpers<.links.destroy")),
                       survey_path(survey),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-mini btn-danger' %>
+          <% end %>
         </td>
       </tr>
 

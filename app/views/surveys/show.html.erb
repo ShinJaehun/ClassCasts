@@ -1,14 +1,31 @@
 <h4> <%=h @survey.name %></h4>
+<hr>
 
 <ol>
+  
   <% for question in @survey.questions %>
-  <li><%= h question.content %></li>
+<p>  
+  <strong>
+  <li>
+    <%= h question.content %><br \>
+    정답 및 해설 : <%= question.explain %><br \>
+  </li>
+  </strong>
+  
   <ul>
     <% for answer in question.answers %>
-      <li><%= h answer.content %></li>
+      <li>
+        <%= h answer.content %>
+          <% if answer.correct == true %>
+              <i class=" icon-ok-sign"></i>
+          <% end %>
+      </li>
     <% end %>
   </ul>
+  <hr>
+</p>
   <% end %>
+
 </ol>
 
 <div class="form-actions">

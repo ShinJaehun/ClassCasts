@@ -1,7 +1,7 @@
 class SurveysController < ApplicationController
-  #before_filter :authenticate_user!, :except => [:show, :index]
-  #before_filter :user_definition
-  #load_and_authorize_resource
+  before_filter :authenticate_user!, :except => [:show, :index]
+  load_and_authorize_resource
+  skip_authorize_resource :only => [:answering, :grading, :results]
   
   # GET /surveys
   # GET /surveys.json
@@ -153,12 +153,6 @@ class SurveysController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-#private
-
-#def user_definition
-#     @survey.user_id = current_user.id
-#end
 
 
 end
