@@ -10,9 +10,8 @@
 
 <body>
 <div class="container">
-  <div class="leaderboard">  
-    <h1>ClassCasts</h1>  
-</div>  
+
+<%= link_to image_tag("title.jpg"), root_path %>
 
 <div class="navbar navbar">
   <div class="navbar-inner">
@@ -22,7 +21,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <%= link_to "쑥쑥오름교실", root_path, :class => "brand" %>
+      <%= link_to "Classcasts", "https://github.com/ShinJaehun/ClassCasts", :class => "brand" %>
       <div class="nav-collapse">
         <ul class="nav">
           <li><%= link_to "수업영상", casts_path %></li>
