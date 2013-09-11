@@ -1,12 +1,12 @@
 == 클래스캐스트
 
-  클래스캐스트는 유튜브 수업 영상을 제공하고  평가 도구와 커뮤니티 기능을 갖춘 온라인 공개 수업 도구입니다. 루비온레일즈(이하 레일즈) 프레임웍으로 개발한  클래스캐스트를 이용하여 누구나 교육용 웹 사이트를 빠른 시간에 만들 수 있습니다. 일반적으로 컴퓨터 화면을 녹화해서 공유하는 애플리케이션을 스크린캐스트라고 하는데 교육용 영상 컨텐츠를 공유할 수 있는 웹 애플리케이션이라는 의미로 클래스캐스트라는 이름을 붙였습니다.
+클래스캐스트는 유튜브 수업 영상을 제공하고  평가 도구와 커뮤니티 기능을 갖춘 온라인 공개 수업 도구입니다. 루비온레일즈(이하 레일즈) 프레임웍으로 개발한  클래스캐스트를 이용하여 누구나 교육용 웹 사이트를 빠른 시간에 만들 수 있습니다. 일반적으로 컴퓨터 화면을 녹화해서 공유하는 애플리케이션을 스크린캐스트라고 하는데 교육용 영상 컨텐츠를 공유할 수 있는 웹 애플리케이션이라는 의미로 클래스캐스트라는 이름을 붙였습니다.
 
 == 클래스캐스트 설치하기
 
-  빠르고 손쉽게 웹 애플리케이션을 제작할 수 있다는 장점에도 불구하고 루비온레일즈에 대한 가장 큰 비판은 버전에 따른 호환성이 심각하리만큼 나쁘다는 점입니다. 다른 버전에서 개발한 소스코드는 제대로 실행되지 않는다는 게 문제입니다. 실제 클래스캐스트 개발을 시작하면서 사용한 루비 패키지는 1.8, 레일즈 패키지는 3.2였지만 개발 도중에 루비는 2.0으로 레일즈는 4.0으로 업그레이드되었습니다. 따라서 아무 생각 없이 루비온레일즈 책이나 온라인 튜토리얼을 따라서 레일즈 프레임워크를 설치하면 반드시 문제가 생길 수 밖에 없습니다.
+빠르고 손쉽게 웹 애플리케이션을 제작할 수 있다는 장점에도 불구하고 루비온레일즈에 대한 가장 큰 비판은 버전에 따른 호환성이 심각하리만큼 나쁘다는 점입니다. 다른 버전에서 개발한 소스코드는 제대로 실행되지 않는다는 게 문제입니다. 실제 클래스캐스트 개발을 시작하면서 사용한 루비 패키지는 1.8, 레일즈 패키지는 3.2였지만 개발 도중에 루비는 2.0으로 레일즈는 4.0으로 업그레이드되었습니다. 따라서 아무 생각 없이 루비온레일즈 책이나 온라인 튜토리얼을 따라서 레일즈 프레임워크를 설치하면 반드시 문제가 생길 수 밖에 없습니다.
 
-  루비 패키지 버전 관리 도구인 rvm이라는 패키지를 활용하면 정확히 원하는 버전의 패키지를 시스템에 설치할 수 있습니다. 우분투와 같은 데비안 계열 리눅스 시스템(우분투 12)에 루비 1.8.7, 레일즈 3.2.13을 설치해야 합니다.
+루비 패키지 버전 관리 도구인 rvm이라는 패키지를 활용하면 정확히 원하는 버전의 패키지를 시스템에 설치할 수 있습니다. 우분투와 같은 데비안 계열 리눅스 시스템(우분투 12)에 루비 1.8.7, 레일즈 3.2.13을 설치해야 합니다.
 
 1. 먼저 rvm을 설치합니다. github에서 직접 코드를 다운로드합니다.
        $ bash < <(curl -sk https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)
@@ -62,218 +62,44 @@
 * Ruby on Rails Tutorial Book: http://www.railstutorial.org/
 
 
-== Debugging Rails
+== 클래스캐스트 설치 후 초기 설정
 
-Sometimes your application goes wrong. Fortunately there are a lot of tools that
-will help you debug it and get it back on the rails.
+설치가 끝나고 처음 접속한 다음 가장 먼저 관리자 비밀번호를 변경해야 합니다. 관리자 계정은 데이터베이스 초기 값(seed)으로 제공되므로 소스코드를 통해 그대로 노출되어 있는 상태이기 때문입니다.
 
-First area to check is the application log files. Have "tail -f" commands
-running on the server.log and development.log. Rails will automatically display
-debugging and runtime information to these files. Debugging info will also be
-shown in the browser on requests from 127.0.0.1.
+1. 첫 화면에서 로그인을 선택합니다.
 
-You can also log your own messages directly into the log file from your code
-using the Ruby logger class from inside your controllers. Example:
+2. 데이터베이스 초기 값으로 설정된 관리자 계정의 사용자 이름은 ‘administrator’이며 비밀번호는 ‘admin’입니다. 관리자 계정으로 로그인합니다.
 
-  class WeblogController < ActionController::Base
-    def destroy
-      @weblog = Weblog.find(params[:id])
-      @weblog.destroy
-      logger.info("#{Time.now} Destroyed Weblog ID ##{@weblog.id}!")
-    end
-  end
+3. 로그인한 다음 화면 위의 상태 표시줄이 변경된 것을 확인할 수 있습니다. 이제 관리자 비밀번호를 변경할 차례입니다. ‘administrator’를 클릭합니다.
 
-The result will be a message in your log file along the lines of:
-
-  Mon Oct 08 14:22:29 +1000 2007 Destroyed Weblog ID #1!
-
-More information on how to use the logger is at http://www.ruby-doc.org/core/
-
-Also, Ruby documentation can be found at http://www.ruby-lang.org/. There are
-several books available online as well:
-
-* Programming Ruby: http://www.ruby-doc.org/docs/ProgrammingRuby/ (Pickaxe)
-* Learn to Program: http://pine.fm/LearnToProgram/ (a beginners guide)
-
-These two books will bring you up to speed on the Ruby language and also on
-programming in general.
+4. 새로 설정하는 사용자 비밀번호를 적절하게 수정하고 현재 비밀번호를 입력합니다. 입력이 끝나면 사용자 정보 수정 버튼을 클릭해서 비밀번호를 변경합니다.
 
 
-== Debugger
+== 유튜브 영상 등록하기
 
-Debugger support is available through the debugger command when you start your
-Mongrel or WEBrick server with --debugger. This means that you can break out of
-execution at any point in the code, investigate and change the model, and then,
-resume execution! You need to install ruby-debug to run the server in debugging
-mode. With gems, use <tt>sudo gem install ruby-debug</tt>. Example:
+적절한 프로그램을 활용하여 수업 영상을 녹화하고 편집합니다. 편집이 끝난 영상을 유튜브에 업로드하고 이를 클래스캐스트에 등록해보겠습니다.
 
-  class WeblogController < ActionController::Base
-    def index
-      @posts = Post.all
-      debugger
-    end
-  end
+1. 유튜브의 동영상 관리자 목록을 확인하면 업로드한 동영상 목록을 확인할 수 있습니다. 쑥쑥오름교실에 등록하고자 하는 영상을 선택합니다.
 
-So the controller will accept the action, run the first line, then present you
-with a IRB prompt in the server window. Here you can do things like:
+2. 동영상 아래쪽에서 ‘공유’ 메뉴를 선택하면 해당 영상의 주소가 나옵니다. 이 주소를 복사합니다.
 
-  >> @posts.inspect
-  => "[#<Post:0x14a6be8
-          @attributes={"title"=>nil, "body"=>nil, "id"=>"1"}>,
-       #<Post:0x14a6620
-          @attributes={"title"=>"Rails", "body"=>"Only ten..", "id"=>"2"}>]"
-  >> @posts.first.title = "hello from a debugger"
-  => "hello from a debugger"
+3. 쑥쑥오름교실 관리자 계정만 수업 영상을 등록할 수 있는 권한을 갖고 있습니다. 영상을 등록하려면 먼저 관리자 계정으로 로그인해야 합니다. 클래스캐스트의 수업영상 메뉴를 선택하고 영상 목록 아래 New 버튼을 클릭합니다.
 
-...and even better, you can examine how your runtime objects actually work:
+4. 관리자가 유튜브에 업로드한 영상의 공유 주소를 Video link에 입력하기만 하면 등록이 완료됩니다. 학년/학기, 단원, 주제 등 영상과 관련한 정보도 함께 입력하고 입력이 끝나면 Create Cast 버튼을 클릭합니다.
 
-  >> f = @posts.first
-  => #<Post:0x13630c4 @attributes={"title"=>nil, "body"=>nil, "id"=>"1"}>
-  >> f.
-  Display all 152 possibilities? (y or n)
+5. 영상이 등록된 것을 확인할 수 있습니다.
 
-Finally, when you're ready to resume execution, you can enter "cont".
+6. 관리자 계정은 수업 영상에 대한 읽기 권한뿐만 아니라 생성, 편집, 삭제 권한을 갖고 있습니다. 일반 사용자 계정과 달리 각 영상마다 Edit, Delete 버튼이 달려 있어 영상에 대한 정보를 편집하거나 영상을 삭제할 수 있습니다.
+
+== 확인 문제 올리기
 
 
-== Console
+1. 문제 등록 권한은 관리자 계정만 갖고 있으므로 먼저 관리자 계정으로 로그인해야 합니다. 확인문제 메뉴에서 Add New Survey 버튼을 클릭합니다.
 
-The console is a Ruby shell, which allows you to interact with your
-application's domain model. Here you'll have all parts of the application
-configured, just like it is when the application is running. You can inspect
-domain models, change values, and save to the database. Starting the script
-without arguments will launch it in the development environment.
+2. 확인문제에 대한 제목과 설명을 입력합니다. 문항을 추가하려면 Add Question 링크를 클릭합니다.
 
-To start the console, run <tt>rails console</tt> from the application
-directory.
+3. 문제와 정답이 포함된 해설을 입력합니다. Add Answer 링크를 클릭해서 보기를 입력할 수 있습니다. Answer에 보기의 내용을 입력하고 정답인 보기에는 Correct 체크박스에 체크합니다. 보기를 추가하고 싶으면 Add Answer를 다시 클릭하고, 문항을 추가하고 싶으면 Add Question을 클릭합니다. 입력이 끝나면 Create Survey 버튼을 클릭합니다.
 
-Options:
-
-* Passing the <tt>-s, --sandbox</tt> argument will rollback any modifications
-  made to the database.
-* Passing an environment name as an argument will load the corresponding
-  environment. Example: <tt>rails console production</tt>.
-
-To reload your controllers and models after launching the console run
-<tt>reload!</tt>
-
-More information about irb can be found at:
-link:http://www.rubycentral.org/pickaxe/irb.html
+4. 입력한 문제를 확인할 수 있습니다.
 
 
-== dbconsole
-
-You can go to the command line of your database directly through <tt>rails
-dbconsole</tt>. You would be connected to the database with the credentials
-defined in database.yml. Starting the script without arguments will connect you
-to the development database. Passing an argument will connect you to a different
-database, like <tt>rails dbconsole production</tt>. Currently works for MySQL,
-PostgreSQL and SQLite 3.
-
-== Description of Contents
-
-The default directory structure of a generated Ruby on Rails application:
-
-  |-- app
-  |   |-- assets
-  |   |   |-- images
-  |   |   |-- javascripts
-  |   |   `-- stylesheets
-  |   |-- controllers
-  |   |-- helpers
-  |   |-- mailers
-  |   |-- models
-  |   `-- views
-  |       `-- layouts
-  |-- config
-  |   |-- environments
-  |   |-- initializers
-  |   `-- locales
-  |-- db
-  |-- doc
-  |-- lib
-  |   |-- assets
-  |   `-- tasks
-  |-- log
-  |-- public
-  |-- script
-  |-- test
-  |   |-- fixtures
-  |   |-- functional
-  |   |-- integration
-  |   |-- performance
-  |   `-- unit
-  |-- tmp
-  |   `-- cache
-  |       `-- assets
-  `-- vendor
-      |-- assets
-      |   |-- javascripts
-      |   `-- stylesheets
-      `-- plugins
-
-app
-  Holds all the code that's specific to this particular application.
-
-app/assets
-  Contains subdirectories for images, stylesheets, and JavaScript files.
-
-app/controllers
-  Holds controllers that should be named like weblogs_controller.rb for
-  automated URL mapping. All controllers should descend from
-  ApplicationController which itself descends from ActionController::Base.
-
-app/models
-  Holds models that should be named like post.rb. Models descend from
-  ActiveRecord::Base by default.
-
-app/views
-  Holds the template files for the view that should be named like
-  weblogs/index.html.erb for the WeblogsController#index action. All views use
-  eRuby syntax by default.
-
-app/views/layouts
-  Holds the template files for layouts to be used with views. This models the
-  common header/footer method of wrapping views. In your views, define a layout
-  using the <tt>layout :default</tt> and create a file named default.html.erb.
-  Inside default.html.erb, call <% yield %> to render the view using this
-  layout.
-
-app/helpers
-  Holds view helpers that should be named like weblogs_helper.rb. These are
-  generated for you automatically when using generators for controllers.
-  Helpers can be used to wrap functionality for your views into methods.
-
-config
-  Configuration files for the Rails environment, the routing map, the database,
-  and other dependencies.
-
-db
-  Contains the database schema in schema.rb. db/migrate contains all the
-  sequence of Migrations for your schema.
-
-doc
-  This directory is where your application documentation will be stored when
-  generated using <tt>rake doc:app</tt>
-
-lib
-  Application specific libraries. Basically, any kind of custom code that
-  doesn't belong under controllers, models, or helpers. This directory is in
-  the load path.
-
-public
-  The directory available for the web server. Also contains the dispatchers and the
-  default HTML files. This should be set as the DOCUMENT_ROOT of your web
-  server.
-
-script
-  Helper scripts for automation and generation.
-
-test
-  Unit and functional tests along with fixtures. When using the rails generate
-  command, template test files will be generated for you and placed in this
-  directory.
-
-vendor
-  External libraries that the application depends on. Also includes the plugins
-  subdirectory. If the app has frozen rails, those gems also go here, under
-  vendor/rails/. This directory is in the load path.
