@@ -58,9 +58,6 @@
 
 15. 레일즈는 포트 3000번을 사용하기 때문에 웹 브라우저 주소 창에 ‘http://localhost:3000’과 같이 포트를 명시해서 접속가능합니다.
 
-* The Getting Started Guide: http://guides.rubyonrails.org/getting_started.html
-* Ruby on Rails Tutorial Book: http://www.railstutorial.org/
-
 
 == 클래스캐스트 설치 후 초기 설정
 
