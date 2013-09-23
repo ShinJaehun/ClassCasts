@@ -1,6 +1,6 @@
 == 클래스캐스트
 
-![Clastcasts Logo](https://raw.github.com/ShinJaehun/ClassCasts/master/app/assets/images/classcasts.jpg)
+![Clastcasts Logo](https://raw.github.com/ShinJaehun/ClassCasts/master/app/assets/images/classcasts.png)
 
 클래스캐스트는 유튜브 수업 영상을 제공하고  평가 도구와 커뮤니티 기능을 갖춘 온라인 공개 수업 도구입니다. 루비온레일즈(이하 레일즈) 프레임웍으로 개발한  클래스캐스트를 이용하여 누구나 교육용 웹 사이트를 빠른 시간에 만들 수 있습니다. 일반적으로 컴퓨터 화면을 녹화해서 공유하는 애플리케이션을 스크린캐스트라고 하는데 교육용 영상 컨텐츠를 공유할 수 있는 웹 애플리케이션이라는 의미로 클래스캐스트라는 이름을 붙였습니다.
 
@@ -104,6 +104,5 @@
 
 == 저작권
 
-* 클래스캐스트는 신재훈이 만들었습니다.
 * 클래스캐스트는 GNU/GPL을 따릅니다.
 * 클래스캐스트 사용 과정에서 발생하는 문제에 대해 보증하지 않습니다.
