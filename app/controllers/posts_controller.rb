@@ -1,15 +1,19 @@
 class PostsController < ApplicationController
+  # devise
   before_filter :authenticate_user!, :except => [:show, :index]
+  # category를 생성하는 prepare_categories 메서드 호출
   before_filter :prepare_categories
+  # cancan 각 액션에 대한 권한 설정
   load_and_authorize_resource
 
 
   # GET /posts
   # GET /posts.json
   def index
-    #@posts = Post.all(:order => "created_at DESC")
-    #@post = current_user.posts
+    # post 생성, 내림차순으로 정렬
     @posts = Post.recent.search(params[:search], params[:page])
+
+    # 화면 오른쪽에 공지사항, FAQ, QNA, 수업영상을 표시
     @notice5 = Post.notice.just5
     @faq5 = Post.faq.just5
     @qna5 = Post.qna.just5
@@ -54,6 +58,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(params[:post])
+    # post를 생성한 사용자 id 저장
     @post.user_id = current_user.id
 
     respond_to do |format|
@@ -98,6 +103,7 @@ class PostsController < ApplicationController
   private
 
   def prepare_categories
+    # category 생성에 필요한 메서드
     @categories = Category.all
   end
 end

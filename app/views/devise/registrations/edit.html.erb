@@ -1,4 +1,4 @@
-<h2>사용자 정보 수정</h2>
+<h4>사용자 정보 수정</h4>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
@@ -38,16 +38,17 @@
 
   <div class="control-group">
     <label class="control-label">현재 비밀번호</label>
-    <i>(비밀번호를 변경하려면 현재 설정되어 있는 비빌번호를 입력하세요.</i>
+    <i>(비밀번호를 변경하려면 현재 설정되어 있는 비빌번호를 입력하세요.)</i>
     <div class="controls">
       <%= f.password_field :current_password %>
     </div>
   </div>
 
   <div><%= f.submit "사용자 정보 수정" %></div>
+  
 <% end %>
 
-<h3>사용자 계정 삭제</h3>
+<h4>사용자 계정 삭제</h4>
 
 <p>사용자 계정을 삭제하시겠습니까?<%= button_to "사용자 계정 삭제 ", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
 

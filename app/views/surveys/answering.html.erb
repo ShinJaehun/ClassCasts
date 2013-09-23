@@ -1,31 +1,42 @@
 <h4><%= @survey.name %></h4>
+
 <hr>
   
- <%= form_tag({:controller => "surveys", :action => "grading"}) do %>
-  <ol class="questions">
-   <% @survey.questions.each do |question| %>
-   <li>
-   <strong><%= question.content %></strong>
-    <ol class="checkbox">
+<%= form_tag({:controller => "surveys", :action => "grading"}) do %>
 
-     <% question.answers.each do |answer| %>
-       <%= check_box_tag "a_checkbox[]", answer.id %>
-       <%= label("answer_".concat(answer.id.to_s).to_sym, answer.content) %>
-     <% end %>
-     </ol>
-     <hr />
-   </li>
-   <% end %>
+  <ol class="questions">
+
+    <% @survey.questions.each do |question| %>
+
+      <li>
+
+        <strong><%= question.content %></strong>
+        <ol class="checkbox">
+
+          <% question.answers.each do |answer| %>
+            <%= check_box_tag "a_checkbox[]", answer.id %>
+            <%= label("answer_".concat(answer.id.to_s).to_sym, answer.content) %>
+          <% end %>
+
+        </ol>
+
+        <hr />
+
+      </li>
+
+    <% end %>
+
   </ol>
 
-    <div>
-        
-        <%= button_tag(:type => "submit", :class => "btn btn-default") do %>
-         <%= t('.submit')%>
-        <% end %>
+  <div>
+      
+    <%= button_tag(:type => "submit", :class => "btn btn-default") do %>
+      <%= t('.submit')%>
+    <% end %>
 
-        <%= link_to t('.back', :default => t("helpers.links.back")),
-              surveys_path, :class => 'btn'  %>
-    </div>
+    <%= link_to t('.back', :default => t("helpers.links.back")),
+        surveys_path, :class => 'btn'  %>
+        
+  </div>
 
 <% end %>

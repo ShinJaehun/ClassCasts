@@ -4,31 +4,36 @@
 <ol>
   
   <% for question in @survey.questions %>
-<p>  
-  <strong>
-  <li>
-    <%= h question.content %><br \>
-    정답 및 해설 : <%= question.explain %><br \>
-  </li>
-  </strong>
-  
-  <ul>
-    <% for answer in question.answers %>
-      <li>
-        <%= h answer.content %>
-          <% if answer.correct == true %>
-              <i class=" icon-ok-sign"></i>
-          <% end %>
-      </li>
-    <% end %>
-  </ul>
-  <hr>
-</p>
+
+    <p>  
+      <strong>
+        <li>
+          <%= h question.content %><br \>
+          정답 및 해설 : <%= question.explain %><br \>
+        </li>
+      </strong>
+      
+      <ul>
+        <% for answer in question.answers %>
+          <li>
+            <%= h answer.content %>
+            <% if answer.correct == true %>
+              <strong class="text-error">정답</strong>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+
+      <hr>
+
+    </p>
+
   <% end %>
 
 </ol>
 
 <div class="form-actions">
+
   <%= link_to t('.back', :default => t("helpers.links.back")),
               surveys_path(), :class => 'btn'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
@@ -38,4 +43,5 @@
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
+              
 </div>

@@ -1,13 +1,18 @@
 class SurveysController < ApplicationController
+  # devise
   before_filter :authenticate_user!, :except => [:show, :index]
+  # cancan 각 액션에 대한 권한 설정
   load_and_authorize_resource
+  # 응시, 결과 처리, 결과와 관련된 액션은 cancan 적용 제외
   skip_authorize_resource :only => [:answering, :grading, :results]
   
   # GET /surveys
   # GET /surveys.json
   def index
+    # survey 생성
     @surveys = Survey.all
   
+    # 화면 오른쪽에 공지사항, FAQ, QNA, 수업영상을 표시
     @notice5 = Post.notice.just5
     @faq5 = Post.faq.just5
     @qna5 = Post.qna.just5
@@ -21,68 +26,34 @@ class SurveysController < ApplicationController
   end
 
   def answering
-   #   @user_answer = User_answer.new
-      @survey = Survey.find(params[:id])
-    #render (:action => 'results', :object => @survey)
-    #  @survey.questions.each do |q|
-    #   @user_answer = q.build_user_answer
-    #  end
-
-      #@user_answer =  User_answer.new
+    # 응시
+    @survey = Survey.find(params[:id])
  
    end
 
   def grading
-      #@survey = Survey.where(params[:id])  
-      @survey = Survey.find(params[:id])
-      @survey.user_id = current_user.id
- 
-      #      @survey.questions.each do |q|        
-      #             @checked = params[:a_checkbox]
-      #             params[:a_checkbox].each do |check|
-      #                q.update(check)
-      #             end
-                    #q.auto_check
-      #       end
-        #  @checked = params[:questions][:answers]  
+    # 채점 : 미완성
+    @survey = Survey.find(params[:id])
+    # 사용자별 점수 저장 : 미완성
+    @survey.user_id = current_user.id
 
+    # 사용자가 선택한 checkbox 리스트 저장
     @checked = params[:a_checkbox]
 
-         #@survey.questions.each do  |q| 
-         #  q.auto_check
-         #end    
-
-    #redirect_to results_survey_path(@survey)
+    # results 액션으로 렌더링
     render (:action => 'results', :object => @survey)
 
  end
 
   def results
-            # @checked = params[:a_checkbox]
-   # @checked.each do |c|
-  #  @a =  Answer.find_by_id(c)
-   #  end     
-  #   @question = @survey.questions.find(params[:id])
-  
-  #  @survey.questions.each do |q|
-  #  @choice = q.answer.include?(@checked)
- # end
-   # @correct_answers = @survey.answers.select('answers.id, answers.correct').where(:correct => true).pluck('answers.id').to_a
-
-      #@survey = @survey.questions.(params[:survey_id])
+            
   end
 
   # GET /surveys/1
   # GET /surveys/1.json
   def show
     @survey = Survey.find(params[:id])
-    #redirect_to surveys_path()      
-    #여기서부터 오류 발생 가능성 있음...//survey를 저장하니 비어있는 question과 answer가 생성됨;;;
-    #@question = @survey.questions.build(params[:survey])
-    #@question.save
-    #@answer =  @question.answers.build(params[:question])
-    #@answer.save
-
+  
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @survey }
@@ -94,15 +65,12 @@ class SurveysController < ApplicationController
   def new
     @survey = Survey.new
 
-#    3.times do
- #    question =  @survey.questions.build
-  #   4.times { question.answers.build }
-   # end
+    # railscasts 196, 197
+    # 3.times do
+    #   question =  @survey.questions.build
+    #   4.times { question.answers.build }
+    # end
   
-    #respond_to do |format|
-    #  format.html # new.html.erb
-    #  format.json { render :json => @survey }
-    #end
   end
 
   # GET /surveys/1/edit

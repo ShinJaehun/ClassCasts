@@ -1,33 +1,40 @@
-
 <div class="container">
 
   <div class="row">
 
-        <div class="span8">
-<div class="page-header">
-  <h4><%= @post.title %></h4>
-<p class="text-info"><%= @post.category.try(:name) %>   <%= @post.user.username %>  <%= @post.created_at.strftime("%y.%m.%d") %></p>
-</div>
-<p><%= @post.content %></p>
-<br>
+    <div class="span8">
 
-<!-- 댓글 -->
- <%= render @post.comments %>
+      <div class="page-header">
 
-<!-- 댓글달기-->
-<%= render "comments/form" %>
+        <h4><%= @post.title %></h4>
+        <p class="text-info"><%= @post.category.try(:name) %>   <%= @post.user.username %>  <%= @post.created_at.strftime("%y.%m.%d") %></p>
 
-<div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              posts_path, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_post_path(@post), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              post_path(@post),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
-</div>
-</div>
-</div>
-</div>
+      </div>
+
+      <p><%= @post.content %></p>
+
+      <br>
+
+      <!-- 댓글 -->
+      <%= render @post.comments %>
+
+      <!-- 댓글달기-->
+      <%= render "comments/form" %>
+
+      <div class="form-actions">
+        <%= link_to t('.back', :default => t("helpers.links.back")),
+                    posts_path, :class => 'btn'  %>
+        <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                    edit_post_path(@post), :class => 'btn' %>
+        <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                    post_path(@post),
+                    :method => 'delete',
+                    :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                    :class => 'btn btn-danger' %>
+      </div><!-- end form actions -->
+
+    </div>
+
+  </div><!-- end container row -->
+
+</div><!-- end container -->

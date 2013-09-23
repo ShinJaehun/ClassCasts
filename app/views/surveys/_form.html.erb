@@ -13,9 +13,11 @@
   <%= f.fields_for :questions do |builder| %>
     <%= render 'question_fields', :f => builder %>
   <% end %>
-  <p><%= link_to_add_fields "Add Question", f, :questions %></p>
+  
+  <p><%= link_to_add_fields "문항 추가하기", f, :questions %></p>
 
   <div class="actions">
     <%= f.button :submit, :class => "btn btn-primary" %>
   </div>
+
 <% end %>

@@ -1,29 +1,40 @@
 <%- model_class = Cast -%>
+
 <div class="page-header">
-  <h4>수업영상</h4>
-</div>
+
+  <% if @cast.grade_semester == 1 %>
+    <h4>공통</h4>
+  <% elsif @cast.grade_semester == 2 %>
+    <h4>5학년 1학기</h4>
+  <% elsif @cast.grade_semester == 3 %>
+    <h4>5학년 2학기</h4>
+  <% elsif @cast.grade_semester == 4 %>
+    <h4>6학년 1학기</h4>
+  <% elsif @cast.grade_semester == 5 %>
+    <h4>6학년 2학기</h4>
+  <% end %>
+
+</div><!-- end page header -->
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
+
+  <dt><strong>단원</strong>:</dt>
+  <dd><%= @cast.chapter %></dd>
+  <dt><strong>주제</strong>:</dt>
   <dd><%= @cast.title %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
+  <dt><strong>내용</strong>:</dt>
   <dd><%= @cast.description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:video_link) %>:</strong></dt>
-  <dd><%= @cast.video_link %></dd>
+
 </dl>
 
 <div class="video-container">
     
   <iframe width="560" height="315" src="//www.youtube.com/embed/<%= @cast.video_link.split('/').last %>" frameborder="0" allowfullscreen></iframe>
 
-  <!--
-	<iframe width="560" height="315" src="//www.youtube.com/embed/<%= @cast.video_link.split('/').last %>" frameborder="0" allowfullscreen></iframe>
--->
-
-
-</div>
+</div><!-- end video container -->
 
 <div class="form-actions">
+
   <%= link_to t('.back', :default => t("helpers.links.back")),
               casts_path, :class => 'btn'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
@@ -33,4 +44,5 @@
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
-</div>
+
+</div><!-- end form container -->

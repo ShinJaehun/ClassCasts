@@ -1,63 +1,79 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>ClassCasts</title>
+
+  <title>쑥쑥오름교실</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
+
 <body>
-<div class="container">
 
-<%= link_to image_tag("title.jpg"), root_path %>
+  <div class="container">
 
-<div class="navbar navbar">
-  <div class="navbar-inner">
-    <div class="container">
-      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-      <%= link_to "Classcasts", "https://github.com/ShinJaehun/ClassCasts", :class => "brand" %>
-      <div class="nav-collapse">
-        <ul class="nav">
-          <li><%= link_to "수업영상", casts_path %></li>
-          <li><%= link_to "게시판", posts_path %></li>
-          <li><%= link_to "확인문제", surveys_path %></li>
-        </ul>
-          <%= render 'layouts/navigation' %>
-      </div>
- 
-    </div>
-  </div>
-</div>
+    <%= link_to image_tag("title.jpg"), root_path %>
 
+    <div class="navbar navbar">
 
-<div id="flash-banner">
-  <% flash.each do |key, msg| %>
-    <%= content_tag :div, msg, :class => "flash " + key.to_s, :id => key.to_s + "-message" %>
-    <%= content_tag :script, :type => "text/javascript" do %>
-      $('#<%= key.to_s + "-message" %>').css('display', 'none');
-      $('#<%= key.to_s + "-message" %>').slideDown().delay(1000).slideUp();
-    <% end %>
-  <% end %>
-</div>
+      <div class="navbar-inner">
+
+        <div class="container">
+
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+
+          <%= link_to "Classcasts", "https://github.com/ShinJaehun/ClassCasts", :class => "brand" %>
+
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li><%= link_to "수업영상", casts_path %></li>
+              <li><%= link_to "게시판", posts_path %></li>
+              <li><%= link_to "확인문제", surveys_path %></li>
+            </ul>
+              <%= render 'layouts/navigation' %>
+          </div>
+     
+        </div><!-- end container -->
+
+      </div><!-- end navbar-inner -->
+
+    </div><!-- end navbar -->
 
 
+    <div id="flash-banner">
 
-  <%= yield %>
+      <% flash.each do |key, msg| %>
+        <%= content_tag :div, msg, :class => "flash " + key.to_s, :id => key.to_s + "-message" %>
+        <%= content_tag :script, :type => "text/javascript" do %>
+          $('#<%= key.to_s + "-message" %>').css('display', 'none');
+          $('#<%= key.to_s + "-message" %>').slideDown().delay(1000).slideUp();
+        <% end %>
+      <% end %>
 
+    </div><!-- end flash-banner -->
 
+    <%= yield %>
+
+  </div><!-- end container -->
 
 </body>
 
 <footer>  
-<br \>
-<p>
-      <%= link_to "©ClassCasts", "https://github.com/ShinJaehun/ClassCasts", :class => "brand" %> 2013 All rights reserved by GNU/GPL.
-</p>  
+
+  <br \>
+  <p style="text-align:center">
+    <%= link_to "쑥쑥오름교실", root_path %>과 
+    <%= link_to "클래스캐스트", "https://github.com/ShinJaehun/ClassCasts"%>는
+    <%= link_to "GNU/GPL", "http://www.gnu.org/licenses/gpl-3.0.en.html"%>을 따릅니다.
+  </p>
+
 </footer>  
+
 </html>

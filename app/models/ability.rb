@@ -9,26 +9,26 @@ class Ability
       #   can :read, :all
       # end
     
-        if user.role == "admin"
-          can :manage, :all
-        elsif user.role == "default"
-          can :read, :all
-          cannot [:create, :update, :destroy], Cast
+      if user.role == "admin"
+        can :manage, :all
+      elsif user.role == "default"
+        can :read, :all
+        cannot [:create, :update, :destroy], Cast
 
-          cannot :manage, Category
+        cannot :manage, Category
 
-          can :manage, Post, :user_id => user.id
-          cannot [:create, :update, :destroy], Post, :category => {:number => 1}
+        can :manage, Post, :user_id => user.id
+        cannot [:create, :update, :destroy], Post, :category => {:number => 1}
 
-          can :manage, Comment, :user_id => user.id
+        can :manage, Comment, :user_id => user.id
 
-          cannot [:create, :update, :destroy], Survey
+        cannot [:create, :update, :destroy], Survey
 
-        elsif user.role == "banned"
-          cannot :manage, :all
-        else
-          can :read, :all # guest user
-        end
+      elsif user.role == "banned"
+        cannot :manage, :all
+      else
+        can :read, :all # guest user
+      end
 
     # The first argument to `can` is the action you are giving the user 
     # permission to do.

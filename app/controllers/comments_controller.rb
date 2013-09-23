@@ -1,15 +1,17 @@
 class CommentsController < ApplicationController
+  # devise
   before_filter :authenticate_user!
-#load_and_authorize_resource
 
   def create
+    # comment를 생성하기 위해 post 호출
     @post = Post.find(params[:post_id])
-    #@comment = current_user.comments.build(params[:comment])
+
+    # 실제 comment 생성   
     @comment = @post.comments.build(params[:comment])
     @comment.user_id = current_user.id
     @comment.save
-    #@comment.user_id = current_user.id
 
+    # post 뷰에 comment를 생성하도록 redirect
     redirect_to post_path(@post)
   end
  

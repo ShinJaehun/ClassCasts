@@ -2,29 +2,42 @@
 <hr>
 
 <ol>
+
   <% for question in @survey.questions %>
-  <p>
-    <strong>
-  <li>
-    <%= h question.content %><br \>
-   정답 및 해설 : <%= question.explain %><br \>
-  </li>
-    </strong>
-  <ul>
-    <% for answer in question.answers %>  
-      <li>	<%= h answer.content %>
-  <% if @checked.include?(answer.id.to_s) %>
-     <i class="icon-ok icon-green"></i>
+
+    <p>
+      <strong>
+        <li>
+          <%= h question.content %><br \>
+          정답 및 해설 : <%= question.explain %><br \>
+        </li>
+      </strong>
+
+      <ul>
+        <% for answer in question.answers %>  
+          <li>
+            <%= h answer.content %>
+            <% if answer.correct == true %>
+              <strong class="text-error">정답</strong>
+            <% end %>
+            <% if @checked.include?(answer.id.to_s) %>
+               <i class="icon-ok icon-green"></i>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+
+    <hr>
+
+    </p>
+
   <% end %>
-      </li>
-    <% end %>
-  </ul>
-  <hr>
-</p>
-  <% end %>
+
 </ol>
 
 <div class="form-actions">
+
   <%= link_to t('.back', :default => t("helpers.links.back")),
               surveys_path(), :class => 'btn'  %>
+              
 </div>

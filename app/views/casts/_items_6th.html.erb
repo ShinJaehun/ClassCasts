@@ -1,50 +1,58 @@
 <% @casts_6th.each do |cast| %>
 
-          <div class="post">
+<div class="post">
 
-            <div class="row">
+  <div class="row">
 
-              <div class="feat-img span2">
-                  <img src="http://img.youtube.com/vi/<%= cast.video_link.split('/').last %>/hqdefault.jpg" title="featured image" alt="an image was here" />
-              </div><!-- end featured image -->
+    <div class="feat-img span2">
 
-              <div class="details span6">
+      <img src="http://img.youtube.com/vi/<%= cast.video_link.split('/').last %>/hqdefault.jpg" title="featured image" alt="an image was here" />
 
-                <% if cast.grade_semester == 4 %>
-                <h4>6학년 1학기 <%= cast.chapter %> : <%= cast.title %></h4>
-                <% elsif cast.grade_semester == 5 %>
-                <h4>6학년 2학기 <%= cast.chapter %> : <%= cast.title %></h4>
-                <% end %>
-                <p><%= cast.description %></p>
-                          <%= link_to t('.show', :default => t("helpers.links.show")),
-                          cast_path(cast), :class => 'btn btn-mini' %>
+    </div><!-- end featured image -->
 
-                      <% if can? :edit, cast %>
-                        <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                                    edit_cast_path(cast), :class => 'btn btn-mini' %>
-                      <% end %>
-                      <% if can? :destroy, cast %>
-                        <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                                    cast_path(cast),
-                                    :method => :delete,
-                                    :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                                    :class => 'btn btn-mini btn-danger' %>
-                      <% end %>
-              </div> <!-- end details -->
+    <div class="details span6">
 
-            </div><!-- end post row -->
+      <% if cast.grade_semester == 4 %>
+        <h4>6학년 1학기 <%= cast.chapter %> : <%= cast.title %></h4>
+      <% elsif cast.grade_semester == 5 %>
+        <h4>6학년 2학기 <%= cast.chapter %> : <%= cast.title %></h4>
+      <% end %>
 
-          </div><!-- end post -->
+      <p><%= cast.description %></p>
 
-          <hr>
+      <%= link_to t('.show', :default => t("helpers.links.show")),
+                  cast_path(cast), :class => 'btn btn-mini' %>
+
+      <% if can? :edit, cast %>
+        <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                    edit_cast_path(cast), :class => 'btn btn-mini' %>
+      <% end %>
+
+      <% if can? :destroy, cast %>
+        <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                    cast_path(cast),
+                    :method => :delete,
+                    :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                    :class => 'btn btn-mini btn-danger' %>
+      <% end %>
+
+    </div> <!-- end details -->
+
+  </div><!-- end post row -->
+
+</div><!-- end post -->
+
+<hr>
       
 <% end %>
 
 <%= will_paginate @casts_6th, :renderer => 'BootstrapPagination::Rails' %><!-- pagination -->
 
 <%= form_tag casts_path, :class => "form-search", :method => 'get', :id => "casts_search" do %>
+
   <div class="input-append">
     <%= text_field_tag :search, params[:search], :class => "search-query"  %>
     <%= submit_tag "Search", :name => nil, :class => "btn" %>
   </div>
+  
 <% end %><!-- search -->

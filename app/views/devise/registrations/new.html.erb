@@ -1,4 +1,4 @@
-<h2>사용자 등록</h2>
+<h4>사용자 등록</h4>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
@@ -30,12 +30,9 @@
       <%= f.password_field :password_confirmation %>
     </div>
   </div>
-<!--
-  <div class="control-group">
-    <label class="control-label">Role</label>
--->
 
   <div><%= f.submit "사용자등록" %></div>
+  
 <% end %>
 
 <%= render "devise/shared/links" %>

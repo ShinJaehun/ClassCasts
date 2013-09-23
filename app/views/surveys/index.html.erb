@@ -4,109 +4,103 @@
 
     <div class="span8">
  
-
       <table class="table table-striped">
 
-  <thead>
-    <tr>
-      <th >제목</th>
-      <th>내용</th>
-      <th><% if can? :manage, @survey %><% end %></th>
-    </tr>
-  </thead> 
-  <tbody>
-      <% @surveys.each do |survey| %>
-      <tr>
-        <td><%= survey.name %></td>
-        <td><%= survey.description %></td>
-        <td>
-        <%= link_to t('.answering', :default => t("helpers.links.answering")),
-                      answering_survey_path(survey), :class => 'btn btn-mini' %>
-        <% if can? :edit, survey %>
-	  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_survey_path(survey), :class => 'btn btn-mini' %>
-        <% end %>
-         <% if can? :destroy, survey %>
-          <%= link_to t('.destroy', :default => t("helpers<.links.destroy")),
-                      survey_path(survey),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
-          <% end %>
-        </td>
-      </tr>
+        <thead>
+          <tr>
+            <th >제목</th>
+            <th>내용</th>
+            <th><% if can? :manage, @survey %><% end %></th>
+          </tr>
+        </thead>
 
+        <tbody>
 
-<% end %>
-    
-  </tbody>
+            <% @surveys.each do |survey| %>
 
-</table>
+              <tr>
+                <td><%= survey.name %></td>
+                <td><%= survey.description %></td>
+                <td>
+                  <%= link_to t('.answering', :default => t("helpers.links.answering")),
+                                answering_survey_path(survey), :class => 'btn btn-mini' %>
+                  <% if can? :edit, survey %>
+          	        <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                                edit_survey_path(survey), :class => 'btn btn-mini' %>
+                  <% end %>
+                  <% if can? :destroy, survey %>
+                    <%= link_to t('.destroy', :default => t("helpers<.links.destroy")),
+                            survey_path(survey),
+                            :method => :delete,
+                            :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                            :class => 'btn btn-mini btn-danger' %>
+                  <% end %>
+                </td>
+              </tr>
 
-<div class="actions">
-  <%= link_to 'Add New Survey', new_survey_path, :class => "btn btn-primary" %>
-</div>
-
-        </div><!-- end main area -->
-
-          <aside class="span4">
+            <% end %>
           
-            <div class="row">
+        </tbody>
+
+      </table>
+
+      <div class="actions">
+
+        <%= link_to '확인문제 추가하기', new_survey_path, :class => "btn btn-primary" %>
+
+      </div>
+
+    </div><!-- end main area -->
+
+    <aside class="span4">
+          
+      <div class="row">
             
-              <div class="widget span4">
-                <h3>수업영상</h3>
+        <div class="widget span4">
 
- <% @casts5.each do |cast| %>
-<p>
-          <%= link_to cast.title, cast_path(cast) %>
- </p>
+          <h3>수업영상</h3>
 
-<% end %>
+          <% @casts5.each do |cast| %>
+            <p><%= link_to cast.title, cast_path(cast) %></p>
+          <% end %>
 
-            </div><!-- end widget row -->
+        </div><!-- end widget row -->
 
-              <div class="widget span4">
-                <h3>공지사항</h3>
+        <div class="widget span4">
 
- <% @notice5.each do |post| %>
+          <h3>공지사항</h3>
 
- <p>
-          <%= link_to post.title, post_path(post) %>
- </p>
-  <% end %>
+          <% @notice5.each do |post| %>
+            <p><%= link_to post.title, post_path(post) %></p>
+          <% end %>
 
-              </div><!-- end widget -->
+        </div><!-- end widget -->
 
-              <div class="widget span4">
-                <h3>FAQ</h3>
+        <div class="widget span4">
 
- <% @faq5.each do |post| %>
+          <h3>FAQ</h3>
 
-<p>
-          <%= link_to post.title, post_path(post) %>
- </p>
+          <% @faq5.each do |post| %>
+            <p><%= link_to post.title, post_path(post) %></p>
+          <% end %>
 
-<% end %>
+        </div><!-- end widget -->
 
-              </div><!-- end widget -->
+        <div class="widget span4">
 
-              <div class="widget span4">
-                <h3>질문과 답변</h3>
+          <h3>질문과 답변</h3>
 
- <% @qna5.each do |post| %>
+            <% @qna5.each do |post| %>
+              <p><%= link_to post.title, post_path(post) %></p>
+            <% end %>
 
-<p>
-          <%= link_to post.title, post_path(post) %>
- </p>
+        </div><!-- end widget -->
 
-<% end %>
+      </div><!-- end row -->
 
-              </div><!-- end widget -->
+    </aside><!-- end sidebar -->
 
-</div>
-          </aside><!-- end sidebar -->
+  </div><!-- end container row -->
 
-  </div>
 </div><!-- end container -->
-
 

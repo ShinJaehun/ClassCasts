@@ -1,16 +1,19 @@
 <div class = "fields offset1">
+
   <p>
-      <%= f.label :content, "문제" %>
+      <%= f.label :content, "문항" %>
       <%= f.text_area :content, :rows => 3 %>
       <%= f.label :explain, "해설" %>
       <%= f.text_area :explain, :rows => 3 %>
       <%= f.hidden_field :_destroy %>
 
-      <%= link_to_remove_fields "remove", f %><br />
+      <%= link_to_remove_fields "삭제", f %><br />
   </p>
   
   <%= f.fields_for :answers do |builder| %>
     <%= render 'answer_fields', :f => builder %>
   <% end %>
-  <p><%= link_to_add_fields "Add Answer", f, :answers %></p>
+
+  <p><%= link_to_add_fields "보기 추가하기", f, :answers %></p>
+
 </div>

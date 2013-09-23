@@ -24,6 +24,8 @@ ClassCasts::Application.routes.draw do
   #end
     
   match "casts/index" => "casts#index", :as => :index
+  match "about" => "home#about", :via => :get
+
   #match "surveys/answering" => "surveys#answering", :via => :post
 
   #match "surveys/grading" => "surveys#grading", :via => :post

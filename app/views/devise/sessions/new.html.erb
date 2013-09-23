@@ -1,4 +1,4 @@
-<h2>로그인</h2>
+<h4>로그인</h4>
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <div class="control-group">
@@ -19,9 +19,10 @@
   	<% if devise_mapping.rememberable? -%>
   		<label class="checkbox">사용자 정보 저장 <%= f.check_box :remember_me %></label>
   	<% end -%>
-	<div>
-		<%= f.submit "로그인" %>
-	</div>
+  </div>
+
+	<div><%= f.submit "로그인" %></div>
+  
 <% end %>
 
 <%= render "devise/shared/links" %>

@@ -1,11 +1,12 @@
 <div class = "fields offset1">
-<p>
-  <%= f.input :correct %>
-  <%= f.hidden_field :_destroy %>
 
-  <%= f.label :content, "Answer" %>
-  <%= f.text_field :content %>
-  <%= link_to_remove_fields "remove", f %>
-</p>
+  <p>
+    <%= f.input :correct %>
+    <%= f.hidden_field :_destroy %>
+
+    <%= f.text_field :content %>
+    <%= link_to_remove_fields "삭제", f %>
+  </p>
+
 </div>
 

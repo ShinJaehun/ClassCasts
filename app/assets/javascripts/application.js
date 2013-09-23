@@ -16,11 +16,13 @@
 //= require_tree .
 
 function remove_fields(link) {
+//survey view, _answer_fields.html.erb
         $(link).prev("input[type=hidden]").value = ("1");
         $(link).closest(".fields").hide();
 }
 
 function add_fields(link, association, content) {
+//survey view, _form_html.erb, _question_fields.html.erb
         var new_id = new Date().getTime();
         var regexp = new RegExp("new_" + association, "g");
         $(link).parent().before(content.replace(regexp, new_id));
