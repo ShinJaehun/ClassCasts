@@ -41,7 +41,7 @@ class SurveysController < ApplicationController
     @checked = params[:a_checkbox]
 
     # results 액션으로 렌더링
-    render (:action => 'results', :object => @survey)
+    render 'results', :object => @survey
 
  end
 
